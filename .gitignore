@@ -1,3 +1,6 @@
 # Project exclude paths
 /can/target/
 /target/
+can/src/main/resources/
+can/src/test/
+src/test/

@@ -1,7 +1,6 @@
 package huat.wubeibei.smartscreenserver.service;
 
 
-import com.google.common.eventbus.EventBus;
 import huat.wubeibei.smartscreenserver.eventbus.MyEventBus;
 
 import java.io.File;

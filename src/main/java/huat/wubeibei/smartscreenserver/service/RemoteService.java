@@ -2,7 +2,6 @@ package huat.wubeibei.smartscreenserver.service;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
-import com.google.common.eventbus.EventBus;
 import com.google.common.eventbus.Subscribe;
 import com.xuhao.didi.core.iocore.interfaces.ISendable;
 import com.xuhao.didi.core.pojo.OriginalData;
@@ -12,6 +11,10 @@ import com.xuhao.didi.socket.common.interfaces.common_interfacies.server.*;
 import com.xuhao.didi.socket.server.action.ServerActionAdapter;
 import huat.wubeibei.smartscreenserver.eventbus.MessageWrap;
 import huat.wubeibei.smartscreenserver.eventbus.MyEventBus;
+import org.dom4j.Document;
+import org.dom4j.DocumentException;
+import org.dom4j.Element;
+import org.dom4j.io.SAXReader;
 
 public class RemoteService {
     private IServerManager serverManager;
@@ -98,14 +101,13 @@ public class RemoteService {
     private void login(JSONObject jsonObject, String Ip) {
         String password = jsonObject.getString("password");
 
-        boolean flag = false;// 验证密码正确与否 没写
-
+        boolean flag = check(password);// 验证密码正确与否
         // 验证成功，踢掉之前的客户端，然后加入新客户端
         // 验证失败，返回验证失败信息
         JSONObject jsonObject2 = new JSONObject();
         jsonObject2.put("action", "login");
         jsonObject2.put("data", flag);
-        jsonObject2.put("msg", flag == false ? "密码错误！" : "登录成功！");
+        jsonObject2.put("msg", !flag ? "密码错误！" : "登录成功！");
         send(jsonObject2.toString(), Ip);
 
         // 登录成功保存的当前IP
@@ -127,5 +129,21 @@ public class RemoteService {
     // 发送
     private void send(JSONObject jsonObject){
         MyEventBus.getInstance().post(jsonObject.toJSONString());
+    }
+
+    // 查询密码
+    private boolean check(String password) {
+        SAXReader saxReader = new SAXReader();
+        Document document = null;
+        try {
+            document = saxReader.read("src/main/resources/Psw.xml");
+            Element rootElement = document.getRootElement();
+            Element psd = rootElement.element("password");
+            String psw = psd.getText();
+            return psw.equals(password);
+        } catch (DocumentException e) {
+            e.printStackTrace();
+        }
+        return false;
     }
 }
