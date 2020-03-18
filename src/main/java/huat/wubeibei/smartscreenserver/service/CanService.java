@@ -22,7 +22,7 @@ import static java.util.Arrays.copyOfRange;
 
 public class CanService {
     private DataConvert dataConvert;
-    private final static int CANPort = 4001;   // CAN总线端口号
+    private final static int CANPort = 9988;   // CAN总线端口号
     private final static String CANIp = "192.168.1.60"; // CAN总线IP地址
     private final static int MessageLength = 14;
     private final Thread CanReceiveThread = new Thread(new CanReceive()); // CAN总线接收线程

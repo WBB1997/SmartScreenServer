@@ -16,6 +16,9 @@ import org.dom4j.DocumentException;
 import org.dom4j.Element;
 import org.dom4j.io.SAXReader;
 
+import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
+
 public class RemoteService {
     private IServerManager serverManager;
     private final static int ClientPort = 5118;
@@ -32,6 +35,7 @@ public class RemoteService {
 
             @Override
             public void onClientConnected(IClient client, int serverPort, IClientPool clientPool) {
+                System.out.println(client.getHostIp() + ":" + serverPort);
                 client.addIOCallback(new IOCallBack());
             }
 
@@ -52,17 +56,12 @@ public class RemoteService {
     }
 
     private class IOCallBack implements IClientIOCallback {
-        // Server->Client
-        @Override
-        public void onClientRead(OriginalData originalData, IClient client, IClientPool<IClient, String> clientPool) {
-
-        }
-
         // Client->Server
         @Override
-        public void onClientWrite(ISendable sendable, IClient client, IClientPool<IClient, String> clientPool) {
-            String str = new String(sendable.parse());
+        public void onClientRead(OriginalData originalData, IClient client, IClientPool<IClient, String> clientPool) {
+            String str = new String(originalData.getBodyBytes(), StandardCharsets.UTF_8);
             // 收到的JSON串
+            System.out.println(str);
             JSONObject jsonObject = JSON.parseObject(str);
             // 处理消息
             String action = jsonObject.getString("action");
@@ -79,6 +78,12 @@ public class RemoteService {
                     break;
             }
         }
+
+        // Server->Client
+        @Override
+        public void onClientWrite(ISendable sendable, IClient client, IClientPool<IClient, String> clientPool) {
+
+        }
     }
 
     // 接收EventBus里的事件（CanService->RemoteService）
@@ -92,6 +97,7 @@ public class RemoteService {
         IClientPool pool = serverManager.getClientPool();
         IClient client = (IClient) pool.findByUniqueTag(ip);
         if (client != null) {
+            System.out.println(str);
             client.send(MessageWrap.getInstance(str));
         }
     }
@@ -108,17 +114,27 @@ public class RemoteService {
         jsonObject2.put("action", "login");
         jsonObject2.put("data", flag);
         jsonObject2.put("msg", !flag ? "密码错误！" : "登录成功！");
-        send(jsonObject2.toString(), Ip);
 
-        // 登录成功保存的当前IP
+        // 登录成功保存的当前IP,踢掉上一次登录的账户
         if (flag) {
             JSONObject jsonObject1 = new JSONObject();
             jsonObject1.put("action", "message");
             jsonObject1.put("status", 0);
             jsonObject1.put("msg", "其他设备登录，本机自动下线。");
-            send(jsonObject1.toJSONString(), connectionClient);
+            if (!connectionClient.equals(Ip))
+                closeClient(connectionClient, new Exception(jsonObject1.toJSONString()));
             connectionClient = Ip;
         }
+        send(jsonObject2.toString(), Ip);
+    }
+
+    public void closeClient(String Tag, Exception e) {
+        IClient client = (IClient) serverManager.getClientPool().findByUniqueTag(Tag);
+//        //you can call disconnect with exception.
+//        client.disconnect(new Exception("exception msg"));
+//        //or you just disconnect it.
+        if (client != null)
+            client.disconnect(e);
     }
 
     // 信号值修改
@@ -134,12 +150,12 @@ public class RemoteService {
     // 查询密码
     private boolean check(String password) {
         SAXReader saxReader = new SAXReader();
-        Document document = null;
+        Document document;
         try {
             document = saxReader.read("src/main/resources/Psw.xml");
             Element rootElement = document.getRootElement();
             Element psd = rootElement.element("password");
-            String psw = psd.getText();
+            String psw = psd.getText().trim();
             return psw.equals(password);
         } catch (DocumentException e) {
             e.printStackTrace();

@@ -23,6 +23,7 @@ public class MessageWrap implements ISendable {
         return message;
     }
 
+
     @Override
     public byte[] parse() {
         byte[] body = message.getBytes(Charset.defaultCharset());
