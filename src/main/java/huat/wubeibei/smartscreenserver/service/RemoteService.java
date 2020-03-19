@@ -110,29 +110,27 @@ public class RemoteService {
         boolean flag = check(password);// 验证密码正确与否
         // 验证成功，踢掉之前的客户端，然后加入新客户端
         // 验证失败，返回验证失败信息
-        JSONObject jsonObject2 = new JSONObject();
-        jsonObject2.put("action", "login");
-        jsonObject2.put("data", flag);
-        jsonObject2.put("msg", !flag ? "密码错误！" : "登录成功！");
+        JSONObject jsonObject1 = new JSONObject();
+        jsonObject1.put("action", "login");
+        jsonObject1.put("data", flag);
+        jsonObject1.put("msg", !flag ? "密码错误！" : "登录成功！");
 
         // 登录成功保存的当前IP,踢掉上一次登录的账户
         if (flag) {
-            JSONObject jsonObject1 = new JSONObject();
-            jsonObject1.put("action", "message");
-            jsonObject1.put("status", 0);
-            jsonObject1.put("msg", "其他设备登录，本机自动下线。");
-            if (!connectionClient.equals(Ip))
-                closeClient(connectionClient, new Exception(jsonObject1.toJSONString()));
+            if (!connectionClient.equals(Ip)) {
+                JSONObject json = new JSONObject();
+                json.put("action", "message");
+                json.put("status", 0);
+                json.put("msg", "其他设备登录，本机自动下线。");
+                closeClient(connectionClient, new Exception(json.toJSONString()));
+            }
             connectionClient = Ip;
         }
-        send(jsonObject2.toString(), Ip);
+        send(jsonObject1.toString(), Ip);
     }
 
     public void closeClient(String Tag, Exception e) {
         IClient client = (IClient) serverManager.getClientPool().findByUniqueTag(Tag);
-//        //you can call disconnect with exception.
-//        client.disconnect(new Exception("exception msg"));
-//        //or you just disconnect it.
         if (client != null)
             client.disconnect(e);
     }
