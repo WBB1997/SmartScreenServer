@@ -16,31 +16,30 @@ import org.dom4j.DocumentException;
 import org.dom4j.Element;
 import org.dom4j.io.SAXReader;
 
-import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
+import java.util.HashMap;
 
 public class RemoteService {
     private IServerManager serverManager;
     private final static int ClientPort = 5118;
-    private String connectionClient = "";
+    private String connectionTag = "";
 
     RemoteService() {
         // 开始监听
         IRegister register = OkSocket.server(ClientPort);
         serverManager = (IServerManager) register.registerReceiver(new ServerActionAdapter() {
             @Override
-            public void onServerWillBeShutdown(int serverPort, IServerShutdown shutdown, IClientPool clientPool, Throwable throwable) {
-                shutdown.shutdown();
-            }
-
-            @Override
             public void onClientConnected(IClient client, int serverPort, IClientPool clientPool) {
-                System.out.println(client.getHostIp() + ":" + serverPort);
+                System.out.println("connected->" + client.getHostIp() + ":" + serverPort);
+                if(!client.getUniqueTag().equals(connectionTag)){
+                    closeClient(client.getUniqueTag(), "其他设备登录，本机自动下线");
+                }
                 client.addIOCallback(new IOCallBack());
             }
 
             @Override
             public void onClientDisconnected(IClient client, int serverPort, IClientPool clientPool) {
+                System.out.println("disconnected->" + client.getHostIp() + ":" + serverPort);
                 client.removeAllIOCallback();
             }
         });
@@ -55,22 +54,23 @@ public class RemoteService {
         }
     }
 
+    // 服务器接收客户端消息回调
     private class IOCallBack implements IClientIOCallback {
-        // Client->Server
+        // 客户端发给服务器
         @Override
         public void onClientRead(OriginalData originalData, IClient client, IClientPool<IClient, String> clientPool) {
             String str = new String(originalData.getBodyBytes(), StandardCharsets.UTF_8);
             // 收到的JSON串
             System.out.println(str);
             JSONObject jsonObject = JSON.parseObject(str);
-            // 处理消息
             String action = jsonObject.getString("action");
+            // 处理消息
             switch (action) {
                 case "login":
                     login(jsonObject.getJSONObject("data"), client.getUniqueTag());
                     break;
                 case "modify":
-                    if (client.getUniqueTag().equals(connectionClient))
+                    if (client.getUniqueTag().equals(connectionTag))
                         modify(jsonObject);
                     break;
                 case "send":
@@ -78,33 +78,30 @@ public class RemoteService {
                     break;
             }
         }
-
-        // Server->Client
+        // 服务器发给客户端
         @Override
         public void onClientWrite(ISendable sendable, IClient client, IClientPool<IClient, String> clientPool) {
-
         }
     }
 
-    // 接收EventBus里的事件（CanService->RemoteService）
+    // 接收EventBus传递的事件（CanService->RemoteService）
     @Subscribe
     public void messageEventBus(MessageWrap messageWrap) {
-        send(messageWrap.getMessage(), connectionClient);
+        send(messageWrap.getMessage(), connectionTag);
     }
 
     // 发送给客户端
-    private void send(String str, String ip) {
+    private void send(String str, String Tag) {
         IClientPool pool = serverManager.getClientPool();
-        IClient client = (IClient) pool.findByUniqueTag(ip);
+        IClient client = (IClient) pool.findByUniqueTag(Tag);
         if (client != null) {
-            System.out.println(str);
             client.send(MessageWrap.getInstance(str));
         }
     }
 
 
     // 登录处理
-    private void login(JSONObject jsonObject, String Ip) {
+    private void login(JSONObject jsonObject, String Tag) {
         String password = jsonObject.getString("password");
 
         boolean flag = check(password);// 验证密码正确与否
@@ -113,26 +110,27 @@ public class RemoteService {
         JSONObject jsonObject1 = new JSONObject();
         jsonObject1.put("action", "login");
         jsonObject1.put("data", flag);
-        jsonObject1.put("msg", !flag ? "密码错误！" : "登录成功！");
+        jsonObject1.put("msg", !flag ? "密码错误" : "登录成功");
 
         // 登录成功保存的当前IP,踢掉上一次登录的账户
         if (flag) {
-            if (!connectionClient.equals(Ip)) {
-                JSONObject json = new JSONObject();
-                json.put("action", "message");
-                json.put("status", 0);
-                json.put("msg", "其他设备登录，本机自动下线。");
-                closeClient(connectionClient, new Exception(json.toJSONString()));
+            if (!connectionTag.equals(Tag)) {
+                closeClient(connectionTag, "其他设备登录，本机自动下线");
             }
-            connectionClient = Ip;
+            connectionTag = Tag;
         }
-        send(jsonObject1.toString(), Ip);
+        send(jsonObject1.toString(), Tag);
     }
 
-    public void closeClient(String Tag, Exception e) {
-        IClient client = (IClient) serverManager.getClientPool().findByUniqueTag(Tag);
-        if (client != null)
-            client.disconnect(e);
+    private void closeClient(String clientTag, String msg) {
+        JSONObject json = new JSONObject();
+        json.put("action", "message");
+        json.put("status", 0);
+        json.put("msg", msg);
+        IClient client = (IClient) serverManager.getClientPool().findByUniqueTag(clientTag);
+        if (client != null) {
+            client.send(MessageWrap.getInstance(json.toJSONString()));
+        }
     }
 
     // 信号值修改
@@ -140,7 +138,7 @@ public class RemoteService {
         MyEventBus.getInstance().post(jsonObject.toJSONString());
     }
 
-    // 发送
+    // 发送给CAN总线
     private void send(JSONObject jsonObject){
         MyEventBus.getInstance().post(jsonObject.toJSONString());
     }
