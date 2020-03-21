@@ -31,7 +31,10 @@ public class CanService {
 
     // 初始化
     public CanService(InputStream config) {
+        // 注册事件总线
+        MyEventBus.getInstance().register(this);
         dataConvert = new DataConvert(config);
+        System.out.println("CanReceiveResource load success!");
     }
 
     // 启动接收

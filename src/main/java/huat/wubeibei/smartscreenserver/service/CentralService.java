@@ -25,7 +25,5 @@ public class CentralService{
         canService.start();
         remoteService = new RemoteService();
         remoteService.start();
-        MyEventBus.getInstance().register(canService);
-        MyEventBus.getInstance().register(remoteService);
     }
 }
