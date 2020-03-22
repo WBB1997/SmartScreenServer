@@ -4,58 +4,63 @@ import java.util.HashMap;
 
 public class Message {
     /**Message*/
-    private Head Head;
+    private Head head;
 
     /**
      * key = signalName
      * value = SignalDefine
      * */
-    private HashMap<String, Signal> SignalMap;
+    private HashMap<String, Signal> signalMap;
     /**
      * key = signalName
      * value = SignalValue
      * */
-    private HashMap<String, Integer> ValueMap;
+    private HashMap<String, Integer> valueMap;
 
     public Message() {
-        Head = new Head();
-        SignalMap = new HashMap<>();
-        ValueMap = new HashMap<>();
+        head = new Head();
+        signalMap = new HashMap<>();
+        valueMap = new HashMap<>();
     }
 
     public void setSignalValue(String signalName, int signalValue){
-        ValueMap.put(signalName, signalValue);
+        valueMap.put(signalName, signalValue);
     }
 
     public int getSignalValue(String signalName){
-        return ValueMap.get(signalName);
+        return valueMap.get(signalName);
     }
 
-    public String keyword(){
-        return Head.getMsgID();
+    public String getKeyword(){
+        return head.getMsgName();
     }
 
     public Head getHead() {
-        return Head;
+        return head;
     }
 
     public HashMap<String, Integer> getValueMap() {
-        return ValueMap;
+        return valueMap;
     }
 
     public void setValueMap(HashMap<String, Integer> valueMap) {
-        ValueMap = valueMap;
+        this.valueMap = valueMap;
     }
 
     public void setHead(Head head) {
-        Head = head;
+        this.head = head;
     }
 
     public HashMap<String, Signal> getSignalMap() {
-        return SignalMap;
+        return signalMap;
     }
 
     public void setSignalMap(HashMap<String, Signal> signalMap) {
-        SignalMap = signalMap;
+        this.signalMap = signalMap;
+    }
+
+    @Override
+    public String toString() {
+        return "head: " + getHead().toString();
     }
 }

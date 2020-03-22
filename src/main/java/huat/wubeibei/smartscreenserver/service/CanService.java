@@ -22,8 +22,10 @@ import static java.util.Arrays.copyOfRange;
 
 public class CanService {
     private DataConvert dataConvert;
-    private final static int CANPort = 9988;   // CAN总线端口号
-    private final static String CANIp = "192.168.1.60"; // CAN总线IP地址
+    private final static int receivePort = 8888;
+    private final static int sendPort = 9988;
+//    private final static String CANIp = "192.168.1.60"; // CAN总线IP地址
+    private final static String CANIp = "127.0.0.1"; // CAN总线IP地址
     private final static int MessageLength = 14;
     private final Thread CanReceiveThread = new Thread(new CanReceive()); // CAN总线接收线程
     private final ExecutorService singleThreadExecutor = Executors.newSingleThreadExecutor(); // 发送线程池，保持发送顺序
@@ -31,8 +33,6 @@ public class CanService {
 
     // 初始化
     public CanService(InputStream config) {
-        // 注册事件总线
-        MyEventBus.getInstance().register(this);
         dataConvert = new DataConvert(config);
         System.out.println("CanReceiveResource load success!");
     }
@@ -47,19 +47,20 @@ public class CanService {
 
     // 向CAN总线发消息
     private void sendData(final String json) {
-        Runnable runnable = () -> {
-            JSONObject jsonObject = JSON.parseObject(json);
-            String msgID = jsonObject.getString("msgID");
-            byte[] bytes = dataConvert.getByte(msgID);
-            DatagramPacket datagramPacket;
-            try (DatagramSocket datagramSocket = new DatagramSocket()) {
-                datagramPacket = new DatagramPacket(bytes, bytes.length, InetAddress.getByName(CANIp), CANPort);
+        singleThreadExecutor.execute(() -> {
+            try {
+                JSONObject jsonObject = JSON.parseObject(json);
+                String msgName = jsonObject.getString("msg_name");
+                // 获取需要发送的Byte
+                byte[] bytes = dataConvert.getByte(msgName);
+                DatagramPacket datagramPacket;
+                DatagramSocket datagramSocket = new DatagramSocket();
+                datagramPacket = new DatagramPacket(bytes, bytes.length, InetAddress.getByName(CANIp), sendPort);
                 datagramSocket.send(datagramPacket);
             } catch (IOException e) {
                 e.printStackTrace();
             }
-        };
-        singleThreadExecutor.execute(runnable);
+        });
     }
 
     // 修改信号值
@@ -73,12 +74,13 @@ public class CanService {
         JSONObject jsonObject = JSON.parseObject(messageWrap.getMessage());
         String action = jsonObject.getString("action");
         JSONObject data = jsonObject.getJSONObject("data");
+        System.out.println("CanService EventBus receive: " + jsonObject);
         switch (action) {
             case "send":
                 sendData(data.toJSONString());
                 break;
             case "modify":
-                setSignalValue(data.getString("msg_id"), data.getString("signal_name"), data.getDoubleValue("value"));
+                setSignalValue(data.getString("msg_name"), data.getString("signal_name"), data.getDoubleValue("value"));
                 break;
         }
     }
@@ -92,7 +94,7 @@ public class CanService {
             DatagramSocket datagramSocket;
             DatagramPacket datagramPacket;
             try {
-                datagramSocket = new DatagramSocket(CANPort);
+                datagramSocket = new DatagramSocket(receivePort);
                 while (true) {
                     datagramPacket = new DatagramPacket(receiveMsg, receiveMsg.length);
                     datagramSocket.receive(datagramPacket);
@@ -105,7 +107,7 @@ public class CanService {
                         @Override
                         public void produce(String json) {
                             // 产生JSON数据流，放入EventBus，转发给客户端
-                            MyEventBus.getInstance().post(MessageWrap.getInstance(json));
+                            MyEventBus.post(MessageWrap.getBean(json));
                         }
 
                         @Override

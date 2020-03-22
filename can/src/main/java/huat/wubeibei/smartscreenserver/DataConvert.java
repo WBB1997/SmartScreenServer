@@ -33,17 +33,17 @@ public class DataConvert {
 
     // 获得报文段的字节流，并重置报文段的值(恢复为默认值，如默认值小于零则不恢复)
     // msgID 为报文段的ID
-    public byte[] getByte(String msgID) {
-        Message msg = messageMap.get(msgID);
+    public byte[] getByte(String msgName) {
+        Message msg = messageMap.get(msgName);
         if (msg == null)
             return null;
         else {
             // 构建一个Byte数组
             int length = msg.getHead().getMsgLength();
             byte[] bytes = new byte[length];
-
-            HashMap<String, Signal> hashMap = msg.getSignalMap();
-            Collection<Signal> signalCollection = hashMap.values();
+            // 获取信号列表
+            Collection<Signal> signalCollection = msg.getSignalMap().values();
+            // 遍历每一个信号
             for (Signal sig : signalCollection) {
                 int SrcNum = msg.getSignalValue(sig.getSignalName());
                 int Byte_offset = sig.getOffset();
@@ -93,7 +93,7 @@ public class DataConvert {
             int realValue = (int) (value / sig.getResolution());
             messageMap.get(msgName).setSignalValue(signalName, realValue);
         } catch (Throwable e) {
-            e.printStackTrace();
+            System.out.println("DataConvert: No signal found");
         }
     }
 
@@ -111,24 +111,31 @@ public class DataConvert {
             Document document = saxReader.read(config);
             Element rootElement = document.getRootElement();
             List<Element> messageList_element = rootElement.elements("Message");
+            // 设置报文
             for (Element msg_element : messageList_element) {
-
                 Message msg = new Message();
-
+                // 初始化报文头
                 Element head_element = msg_element.element("Head");
                 fillAttribute(head_element, msg.getHead());
-
-                List<Element> signalList_element = msg_element.elements("SignalList");
-                HashMap<String, Signal> hashMap = new HashMap<>();
+                // 初始化每一个信号与其值
+                List<Element> signalList_element = msg_element.element("SignalList").elements();
+                HashMap<String, Signal> signalHashMap = new HashMap<>();
+                HashMap<String, Integer> valueHashMap = new HashMap<>();
                 for (Element signal_element : signalList_element) {
                     Signal sig = new Signal();
-                    fillAttribute(signal_element.element("Signal"), sig);
+                    fillAttribute(signal_element, sig);
                     ///////////////////////////////////////
-                    hashMap.put(sig.keyword(), sig);
+                    signalHashMap.put(sig.getKeyword(), sig);
+                    int value = sig.getDefaultValue() != -1 ? sig.getDefaultValue() : 0;
+                    valueHashMap.put(sig.getKeyword(), value);
                 }
-                msg.setSignalMap(hashMap);
-                ///////////////////////////////////////
-                messageMap.put(msg.keyword(), msg);
+                // 设置信号与其值
+                msg.setSignalMap(signalHashMap);
+                msg.setValueMap(valueHashMap);
+                //
+                System.out.println("DataConvert->initMessageMap: " + msg.toString());
+                // 存储报文
+                messageMap.put(msg.getKeyword(), msg);
             }
         } catch (DocumentException | NoSuchMethodException | InvocationTargetException | IllegalAccessException e) {
             e.printStackTrace();

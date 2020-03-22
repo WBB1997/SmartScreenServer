@@ -37,8 +37,6 @@ public class RemoteService {
     private ConcurrentHashMap<String, String> mClientList = new ConcurrentHashMap<>();
 
     RemoteService() {
-        // 注册事件总线
-        MyEventBus.getInstance().register(this);
         // 开始监听
         IRegister register = OkSocket.server(ClientPort);
         serverManager = (IServerManager) register.registerReceiver(new ServerActionAdapter() {
@@ -86,7 +84,7 @@ public class RemoteService {
         public void onClientRead(OriginalData originalData, IClient client, IClientPool<IClient, String> clientPool) {
             String str = new String(originalData.getBodyBytes(), StandardCharsets.UTF_8);
             // 收到的JSON串
-            System.out.println(str);
+            System.out.println("RemoteService receive: " + str);
             JSONObject jsonObject = JSON.parseObject(str);
             String action = jsonObject.getString("action");
             // 处理消息
@@ -119,6 +117,7 @@ public class RemoteService {
     // 接收EventBus传递的事件（CanService->RemoteService）
     @Subscribe
     public void messageEventBus(MessageWrap messageWrap) {
+        System.out.println("RemoteService EventBus receive: " + messageWrap.getMessage());
         send(messageWrap.getMessage(), connectionIp);
     }
 
@@ -128,7 +127,7 @@ public class RemoteService {
         IClient client = (IClient) pool.findByUniqueTag(Tag);
         if (client != null) {
             System.out.println(str);
-            client.send(MessageWrap.getInstance(str));
+            client.send(MessageWrap.getBean(str));
         }
     }
 
@@ -167,18 +166,20 @@ public class RemoteService {
         IClient client = (IClient) serverManager.getClientPool().findByUniqueTag(mClientList.get(clientIp));
         if (client != null) {
             System.out.println(json);
-            client.send(MessageWrap.getInstance(json.toJSONString()));
+            client.send(MessageWrap.getBean(json.toJSONString()));
         }
     }
 
     // 信号值修改
     private void modify(JSONObject jsonObject) {
-        MyEventBus.getInstance().post(jsonObject.toJSONString());
+        System.out.println("RemoteService EventBus send: " + jsonObject);
+        MyEventBus.post(MessageWrap.getBean(jsonObject.toJSONString()));
     }
 
     // 发送给CAN总线
     private void send(JSONObject jsonObject) {
-        MyEventBus.getInstance().post(jsonObject.toJSONString());
+        System.out.println("RemoteService EventBus send: " + jsonObject);
+        MyEventBus.post(MessageWrap.getBean(jsonObject.toJSONString()));
     }
 
     // 获得上一次登录的用户Ip
@@ -204,17 +205,10 @@ public class RemoteService {
             Element tagele = root.addElement("ip");
             tagele.setText(ip);
             OutputStream os = new FileOutputStream("src/main/resources/Ip.xml");
-            //Format格式输出格式刷
             OutputFormat format = OutputFormat.createPrettyPrint();
-            //设置xml编码
             format.setEncoding("utf-8");
-
-            //写：传递两个参数一个为输出流表示生成xml文件在哪里
-            //另一个参数表示设置xml的格式
             XMLWriter xw = new XMLWriter(os, format);
-            //将组合好的xml封装到已经创建好的document对象中，写出真实存在的xml文件中
             xw.write(doc);
-            //清空缓存关闭资源
             xw.flush();
             xw.close();
         } catch (Exception e) {

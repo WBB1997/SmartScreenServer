@@ -11,7 +11,7 @@ public class MessageWrap implements ISendable {
 
     private final String message;
 
-    public static MessageWrap getInstance(String message) {
+    public static MessageWrap getBean(String message) {
         return new MessageWrap(message);
     }
 

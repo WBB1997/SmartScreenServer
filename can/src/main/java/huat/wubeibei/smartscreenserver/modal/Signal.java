@@ -13,7 +13,7 @@ public class Signal {
     private int DefaultValue;
     private int InvalidValue;
 
-    public String keyword(){
+    public String getKeyword(){
         return SignalName;
     }
 

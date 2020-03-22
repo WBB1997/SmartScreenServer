@@ -57,4 +57,15 @@ public class Head {
     public void setTimes(int times) {
         Times = times;
     }
+
+    @Override
+    public String toString() {
+        return "{MsgName=" + getMsgName() + "," +
+                "MsgID=" + getMsgID() + "," +
+                "MsgSendType=" + getMsgSendType() + "," +
+                "MsgCycleTime=" + getMsgCycleTime() + "," +
+                "MsgLength=" + getMsgLength() + "," +
+                "Times=" + getTimes() + "," +
+                "}";
+    }
 }
