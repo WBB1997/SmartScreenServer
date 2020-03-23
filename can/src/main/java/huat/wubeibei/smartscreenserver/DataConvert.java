@@ -162,6 +162,12 @@ public class DataConvert {
                     String num = (String) element.element(field.getName()).getData();
                     m.invoke(object, Integer.parseInt(num));
                 }
+                // 如果类型是double
+                if (field.getGenericType().toString().equals("double")) {
+                    Method m = object.getClass().getMethod("set" + field.getName(), double.class);
+                    String num = (String) element.element(field.getName()).getData();
+                    m.invoke(object, Double.parseDouble(num));
+                }
             }
         }
     }

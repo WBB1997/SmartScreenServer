@@ -6,7 +6,7 @@ public class Signal {
     private int SignalLength;
     private int StartBytePosition;
     private int StartBitPosition;
-    private int Resolution;
+    private double Resolution;
     private int Offset;
     private int MinValue;
     private int MaxValue;
@@ -57,11 +57,11 @@ public class Signal {
         StartBitPosition = startBitPosition;
     }
 
-    public int getResolution() {
+    public double getResolution() {
         return Resolution;
     }
 
-    public void setResolution(int resolution) {
+    public void setResolution(double resolution) {
         Resolution = resolution;
     }
 

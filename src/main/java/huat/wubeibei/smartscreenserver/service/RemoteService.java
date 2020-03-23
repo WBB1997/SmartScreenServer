@@ -84,7 +84,6 @@ public class RemoteService {
         public void onClientRead(OriginalData originalData, IClient client, IClientPool<IClient, String> clientPool) {
             String str = new String(originalData.getBodyBytes(), StandardCharsets.UTF_8);
             // 收到的JSON串
-            System.out.println("RemoteService receive: " + str);
             JSONObject jsonObject = JSON.parseObject(str);
             String action = jsonObject.getString("action");
             // 处理消息
@@ -117,7 +116,6 @@ public class RemoteService {
     // 接收EventBus传递的事件（CanService->RemoteService）
     @Subscribe
     public void messageEventBus(MessageWrap messageWrap) {
-        System.out.println("RemoteService EventBus receive: " + messageWrap.getMessage());
         send(messageWrap.getMessage(), connectionIp);
     }
 
@@ -172,13 +170,11 @@ public class RemoteService {
 
     // 信号值修改
     private void modify(JSONObject jsonObject) {
-        System.out.println("RemoteService EventBus send: " + jsonObject);
         MyEventBus.post(MessageWrap.getBean(jsonObject.toJSONString()));
     }
 
     // 发送给CAN总线
     private void send(JSONObject jsonObject) {
-        System.out.println("RemoteService EventBus send: " + jsonObject);
         MyEventBus.post(MessageWrap.getBean(jsonObject.toJSONString()));
     }
 
