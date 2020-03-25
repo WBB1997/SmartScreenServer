@@ -63,7 +63,7 @@ public class DataConvert {
     // 从字节流中获得报文的JSON串
     public void getJSONString(byte[] bytes, JSONStreamListener jsonStreamListener) {
         try {
-            String key = ByteUtil.bytesToHex(copyOfRange(bytes, 8, 4));
+            String key = ByteUtil.bytesToHex(copyOfRange(bytes, 8, 10));
             String sampleKey = key.substring(key.charAt('0'));
             // 报文段
             Message message = messageMap.get(sampleKey);
