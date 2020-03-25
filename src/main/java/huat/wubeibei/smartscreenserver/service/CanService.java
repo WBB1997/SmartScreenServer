@@ -98,12 +98,12 @@ public class CanService {
                 while (true) {
                     datagramPacket = new DatagramPacket(receiveMsg, receiveMsg.length);
                     datagramSocket.receive(datagramPacket);
-                    String check;
-                    check = bytesToHex(copyOfRange(receiveMsg, 0, 2));
-                    if (!check.equals("aabb")) {
-                        return;
-                    }
-                    dataConvert.getJSONString(copyOfRange(receiveMsg, 2, 14), new JSONStreamListener() {
+//                    String check;
+//                    check = bytesToHex(copyOfRange(receiveMsg, 0, 2));
+//                    if (!check.equals("aabb")) {
+//                        return;
+//                    }
+                    dataConvert.getJSONString(receiveMsg, new JSONStreamListener() {
                         @Override
                         public void produce(String json) {
                             // 产生JSON数据流，放入EventBus，转发给客户端
