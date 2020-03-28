@@ -50,16 +50,64 @@
     </Message>
     <Message>
         <Head>
-            <MsgName>BCM1</MsgName>
-            <MsgID>361</MsgID>
+            <MsgName>BMS1</MsgName>
+            <MsgID>260</MsgID>
             <MsgSendType>周期</MsgSendType>
-            <MsgCycleTime>200</MsgCycleTime>
+            <MsgCycleTime>100</MsgCycleTime>
             <MsgLength>8</MsgLength>
             <Times>5</Times>
         </Head>
         <SignalList>
             <Signal>
-                <SignalName>BCM_Dig_Ord_HandLightCtr</SignalName>
+                <SignalName>BMS_SOC</SignalName>
+                <LayoutFormat>Intel</LayoutFormat>
+                <SignalLength>16</SignalLength>
+                <StartBitPosition>16</StartBitPosition>
+                <Resolution>0.1</Resolution>
+                <Offset>0</Offset>
+                <MinValue>0</MinValue>
+                <MaxValue>100</MaxValue>
+                <DefaultValue>-1</DefaultValue>
+                <InvalidValue>-1</InvalidValue>
+            </Signal>
+        </SignalList>
+    </Message>
+    <Message>
+        <Head>
+            <MsgName>AD1</MsgName>
+            <MsgID>219</MsgID>
+            <MsgSendType>周期</MsgSendType>
+            <MsgCycleTime>10</MsgCycleTime>
+            <MsgLength>8</MsgLength>
+            <Times>5</Times>
+        </Head>
+        <SignalList>
+            <Signal>
+                <SignalName>HAD_Dig_Ord_SystemStatus</SignalName>
+                <LayoutFormat>Motorola</LayoutFormat>
+                <SignalLength>2</SignalLength>
+                <StartBitPosition>56</StartBitPosition>
+                <Resolution>1</Resolution>
+                <Offset>0</Offset>
+                <MinValue>0</MinValue>
+                <MaxValue>3</MaxValue>
+                <DefaultValue>0</DefaultValue>
+                <InvalidValue>-1</InvalidValue>
+            </Signal>
+        </SignalList>
+    </Message>
+    <Message>
+        <Head>
+            <MsgName>AD4</MsgName>
+            <MsgID>4cf</MsgID>
+            <MsgSendType>周期</MsgSendType>
+            <MsgCycleTime>1000</MsgCycleTime>
+            <MsgLength>8</MsgLength>
+            <Times>5</Times>
+        </Head>
+        <SignalList>
+            <Signal>
+                <SignalName>HAD_GPSEastAndWestLongitudeMask</SignalName>
                 <LayoutFormat>Motorola</LayoutFormat>
                 <SignalLength>1</SignalLength>
                 <StartBitPosition>0</StartBitPosition>
@@ -71,10 +119,142 @@
                 <InvalidValue>-1</InvalidValue>
             </Signal>
             <Signal>
+                <SignalName>HAD_GPSLongitude_Degree</SignalName>
+                <LayoutFormat>Motorola</LayoutFormat>
+                <SignalLength>8</SignalLength>
+                <StartBitPosition>8</StartBitPosition>
+                <Resolution>1</Resolution>
+                <Offset>0</Offset>
+                <MinValue>0</MinValue>
+                <MaxValue>180</MaxValue>
+                <DefaultValue>0</DefaultValue>
+                <InvalidValue>-1</InvalidValue>
+            </Signal>
+            <Signal>
+                <SignalName>HAD_GPSLongitude_Minute</SignalName>
+                <LayoutFormat>Motorola</LayoutFormat>
+                <SignalLength>6</SignalLength>
+                <StartBitPosition>0</StartBitPosition>
+                <Resolution>1</Resolution>
+                <Offset>0</Offset>
+                <MinValue>0</MinValue>
+                <MaxValue>59</MaxValue>
+                <DefaultValue>0</DefaultValue>
+                <InvalidValue>-1</InvalidValue>
+            </Signal>
+            <Signal>
+                <SignalName>HAD_GPSLongitude_Second</SignalName>
+                <LayoutFormat>Motorola</LayoutFormat>
+                <SignalLength>6</SignalLength>
+                <StartBitPosition>18</StartBitPosition>
+                <Resolution>1</Resolution>
+                <Offset>0</Offset>
+                <MinValue>0</MinValue>
+                <MaxValue>999</MaxValue>
+                <DefaultValue>0</DefaultValue>
+                <InvalidValue>-1</InvalidValue>
+            </Signal>
+            <Signal>
+                <SignalName>HAD_GPSLongitude_SecondDecimal</SignalName>
+                <LayoutFormat>Motorola</LayoutFormat>
+                <SignalLength>10</SignalLength>
+                <StartBitPosition>24</StartBitPosition>
+                <Resolution>1</Resolution>
+                <Offset>0</Offset>
+                <MinValue>0</MinValue>
+                <MaxValue>999</MaxValue>
+                <DefaultValue>0</DefaultValue>
+                <InvalidValue>-1</InvalidValue>
+            </Signal>
+            <Signal>
+                <SignalName>HAD_GPSNorthAndSouthLatitudeMask</SignalName>
+                <LayoutFormat>Motorola</LayoutFormat>
+                <SignalLength>1</SignalLength>
+                <StartBitPosition>32</StartBitPosition>
+                <Resolution>1</Resolution>
+                <Offset>0</Offset>
+                <MinValue>0</MinValue>
+                <MaxValue>1</MaxValue>
+                <DefaultValue>0</DefaultValue>
+                <InvalidValue>-1</InvalidValue>
+            </Signal>
+            <Signal>
+                <SignalName>HAD_GPSLatitude_Degree</SignalName>
+                <LayoutFormat>Motorola</LayoutFormat>
+                <SignalLength>7</SignalLength>
+                <StartBitPosition>33</StartBitPosition>
+                <Resolution>1</Resolution>
+                <Offset>0</Offset>
+                <MinValue>0</MinValue>
+                <MaxValue>90</MaxValue>
+                <DefaultValue>0</DefaultValue>
+                <InvalidValue>-1</InvalidValue>
+            </Signal>
+            <Signal>
+                <SignalName>HAD_GPSLatitude_Minute</SignalName>
+                <LayoutFormat>Motorola</LayoutFormat>
+                <SignalLength>6</SignalLength>
+                <StartBitPosition>40</StartBitPosition>
+                <Resolution>1</Resolution>
+                <Offset>0</Offset>
+                <MinValue>0</MinValue>
+                <MaxValue>59</MaxValue>
+                <DefaultValue>0</DefaultValue>
+                <InvalidValue>-1</InvalidValue>
+            </Signal>
+            <Signal>
+                <SignalName>HAD_GPSLatitude_Second</SignalName>
+                <LayoutFormat>Motorola</LayoutFormat>
+                <SignalLength>6</SignalLength>
+                <StartBitPosition>50</StartBitPosition>
+                <Resolution>1</Resolution>
+                <Offset>0</Offset>
+                <MinValue>0</MinValue>
+                <MaxValue>59</MaxValue>
+                <DefaultValue>0</DefaultValue>
+                <InvalidValue>-1</InvalidValue>
+            </Signal>
+            <Signal>
+                <SignalName>HAD_GPSLatitude_SecondDecimal</SignalName>
+                <LayoutFormat>Motorola</LayoutFormat>
+                <SignalLength>10</SignalLength>
+                <StartBitPosition>56</StartBitPosition>
+                <Resolution>1</Resolution>
+                <Offset>0</Offset>
+                <MinValue>0</MinValue>
+                <MaxValue>999</MaxValue>
+                <DefaultValue>0</DefaultValue>
+                <InvalidValue>-1</InvalidValue>
+            </Signal>
+            <Signal>
+                <SignalName>HAD_GPSPositioningStatus</SignalName>
+                <LayoutFormat>Motorola</LayoutFormat>
+                <SignalLength>1</SignalLength>
+                <StartBitPosition>46</StartBitPosition>
+                <Resolution>1</Resolution>
+                <Offset>0</Offset>
+                <MinValue>0</MinValue>
+                <MaxValue>1</MaxValue>
+                <DefaultValue>0</DefaultValue>
+                <InvalidValue>-1</InvalidValue>
+            </Signal>
+        </SignalList>
+    </Message>
+    <Message>
+        <Head>
+            <MsgName>BCM1</MsgName>
+            <MsgID>361</MsgID>
+            <MsgSendType>周期</MsgSendType>
+            <MsgCycleTime>200</MsgCycleTime>
+            <MsgLength>8</MsgLength>
+            <Times>5</Times>
+        </Head>
+        <SignalList>
+            <Signal>
                 <SignalName>BCM_Flg_Stat_LeftTurningLamp</SignalName>
                 <LayoutFormat>Motorola</LayoutFormat>
                 <SignalLength>1</SignalLength>
-                <StartBitPosition>1</StartBitPosition>
+                <StartBitPosition>0</StartBitPosition>
                 <Resolution>1</Resolution>
                 <Offset>0</Offset>
                 <MinValue>0</MinValue>
@@ -86,19 +266,7 @@
                 <SignalName>BCM_Flg_Stat_RightTurningLamp</SignalName>
                 <LayoutFormat>Motorola</LayoutFormat>
                 <SignalLength>1</SignalLength>
-                <StartBitPosition>2</StartBitPosition>
-                <Resolution>1</Resolution>
-                <Offset>0</Offset>
-                <MinValue>0</MinValue>
-                <MaxValue>1</MaxValue>
-                <DefaultValue>0</DefaultValue>
-                <InvalidValue>-1</InvalidValue>
-            </Signal>
-            <Signal>
-                <SignalName>BCM_Flg_Stat_HandLightCtr</SignalName>
-                <LayoutFormat>Motorola</LayoutFormat>
-                <SignalLength>1</SignalLength>
-                <StartBitPosition>3</StartBitPosition>
+                <StartBitPosition>1</StartBitPosition>
                 <Resolution>1</Resolution>
                 <Offset>0</Offset>
                 <MinValue>0</MinValue>
@@ -110,7 +278,7 @@
                 <SignalName>BCM_Flg_Stat_HighBeam</SignalName>
                 <LayoutFormat>Motorola</LayoutFormat>
                 <SignalLength>1</SignalLength>
-                <StartBitPosition>4</StartBitPosition>
+                <StartBitPosition>2</StartBitPosition>
                 <Resolution>1</Resolution>
                 <Offset>0</Offset>
                 <MinValue>0</MinValue>
@@ -122,7 +290,19 @@
                 <SignalName>BCM_Flg_Stat_LowBeam</SignalName>
                 <LayoutFormat>Motorola</LayoutFormat>
                 <SignalLength>1</SignalLength>
-                <StartBitPosition>5</StartBitPosition>
+                <StartBitPosition>3</StartBitPosition>
+                <Resolution>1</Resolution>
+                <Offset>0</Offset>
+                <MinValue>0</MinValue>
+                <MaxValue>1</MaxValue>
+                <DefaultValue>0</DefaultValue>
+                <InvalidValue>-1</InvalidValue>
+            </Signal>
+            <Signal>
+                <SignalName>BCM_Flg_Stat_FrontFogLamp</SignalName>
+                <LayoutFormat>Motorola</LayoutFormat>
+                <SignalLength>1</SignalLength>
+                <StartBitPosition>4</StartBitPosition>
                 <Resolution>1</Resolution>
                 <Offset>0</Offset>
                 <MinValue>0</MinValue>
@@ -134,7 +314,7 @@
                 <SignalName>BCM_Flg_Stat_RearFogLamp</SignalName>
                 <LayoutFormat>Motorola</LayoutFormat>
                 <SignalLength>1</SignalLength>
-                <StartBitPosition>6</StartBitPosition>
+                <StartBitPosition>5</StartBitPosition>
                 <Resolution>1</Resolution>
                 <Offset>0</Offset>
                 <MinValue>0</MinValue>
@@ -146,7 +326,7 @@
                 <SignalName>BCM_Flg_Stat_DangerAlarmLamp</SignalName>
                 <LayoutFormat>Motorola</LayoutFormat>
                 <SignalLength>1</SignalLength>
-                <StartBitPosition>7</StartBitPosition>
+                <StartBitPosition>6</StartBitPosition>
                 <Resolution>1</Resolution>
                 <Offset>0</Offset>
                 <MinValue>0</MinValue>
@@ -155,31 +335,19 @@
                 <InvalidValue>-1</InvalidValue>
             </Signal>
             <Signal>
-                <SignalName>BCM_Flg_Stat_BrakeLamp</SignalName>
+                <SignalName>BCM_ACBlowingLevel</SignalName>
                 <LayoutFormat>Motorola</LayoutFormat>
-                <SignalLength>1</SignalLength>
-                <StartBitPosition>8</StartBitPosition>
-                <Resolution>1</Resolution>
-                <Offset>0</Offset>
-                <MinValue>0</MinValue>
-                <MaxValue>1</MaxValue>
-                <DefaultValue>0</DefaultValue>
-                <InvalidValue>-1</InvalidValue>
-            </Signal>
-            <Signal>
-                <SignalName>BCM_Flg_Stat_BackupLamp</SignalName>
-                <LayoutFormat>Motorola</LayoutFormat>
-                <SignalLength>1</SignalLength>
+                <SignalLength>3</SignalLength>
                 <StartBitPosition>9</StartBitPosition>
                 <Resolution>1</Resolution>
                 <Offset>0</Offset>
                 <MinValue>0</MinValue>
-                <MaxValue>1</MaxValue>
-                <DefaultValue>0</DefaultValue>
+                <MaxValue>7</MaxValue>
+                <DefaultValue>6</DefaultValue>
                 <InvalidValue>-1</InvalidValue>
             </Signal>
             <Signal>
-                <SignalName>BCM_Flg_Stat_SeatSensor1</SignalName>
+                <SignalName>BCM_DemisterStatus</SignalName>
                 <LayoutFormat>Motorola</LayoutFormat>
                 <SignalLength>1</SignalLength>
                 <StartBitPosition>10</StartBitPosition>
@@ -190,184 +358,28 @@
                 <DefaultValue>0</DefaultValue>
                 <InvalidValue>-1</InvalidValue>
             </Signal>
+        </SignalList>
+    </Message>
+    <Message>
+        <Head>
+            <MsgName>ESC3</MsgName>
+            <MsgID>4c0</MsgID>
+            <MsgSendType>周期</MsgSendType>
+            <MsgCycleTime>20</MsgCycleTime>
+            <MsgLength>8</MsgLength>
+            <Times>5</Times>
+        </Head>
+        <SignalList>
             <Signal>
-                <SignalName>BCM_Flg_Stat_SeatSensor2</SignalName>
-                <LayoutFormat>Motorola</LayoutFormat>
-                <SignalLength>1</SignalLength>
-                <StartBitPosition>11</StartBitPosition>
-                <Resolution>1</Resolution>
+                <SignalName>Wheel_Speed_ABS</SignalName>
+                <LayoutFormat>Intel</LayoutFormat>
+                <SignalLength>16</SignalLength>
+                <StartBitPosition>8</StartBitPosition>
+                <Resolution>0.01</Resolution>
                 <Offset>0</Offset>
                 <MinValue>0</MinValue>
-                <MaxValue>1</MaxValue>
-                <DefaultValue>0</DefaultValue>
-                <InvalidValue>-1</InvalidValue>
-            </Signal>
-            <Signal>
-                <SignalName>BCM_Flg_Stat_SeatSensor3</SignalName>
-                <LayoutFormat>Motorola</LayoutFormat>
-                <SignalLength>1</SignalLength>
-                <StartBitPosition>12</StartBitPosition>
-                <Resolution>1</Resolution>
-                <Offset>0</Offset>
-                <MinValue>0</MinValue>
-                <MaxValue>1</MaxValue>
-                <DefaultValue>0</DefaultValue>
-                <InvalidValue>-1</InvalidValue>
-            </Signal>
-            <Signal>
-                <SignalName>BCM_Flg_Stat_SeatSensor4</SignalName>
-                <LayoutFormat>Motorola</LayoutFormat>
-                <SignalLength>1</SignalLength>
-                <StartBitPosition>13</StartBitPosition>
-                <Resolution>1</Resolution>
-                <Offset>0</Offset>
-                <MinValue>0</MinValue>
-                <MaxValue>1</MaxValue>
-                <DefaultValue>0</DefaultValue>
-                <InvalidValue>-1</InvalidValue>
-            </Signal>
-            <Signal>
-                <SignalName>BCM_Flg_Stat_SeatSensor5</SignalName>
-                <LayoutFormat>Motorola</LayoutFormat>
-                <SignalLength>1</SignalLength>
-                <StartBitPosition>14</StartBitPosition>
-                <Resolution>1</Resolution>
-                <Offset>0</Offset>
-                <MinValue>0</MinValue>
-                <MaxValue>1</MaxValue>
-                <DefaultValue>0</DefaultValue>
-                <InvalidValue>-1</InvalidValue>
-            </Signal>
-            <Signal>
-                <SignalName>BCM_Flg_Stat_SeatSensor6</SignalName>
-                <LayoutFormat>Motorola</LayoutFormat>
-                <SignalLength>1</SignalLength>
-                <StartBitPosition>15</StartBitPosition>
-                <Resolution>1</Resolution>
-                <Offset>0</Offset>
-                <MinValue>0</MinValue>
-                <MaxValue>1</MaxValue>
-                <DefaultValue>0</DefaultValue>
-                <InvalidValue>-1</InvalidValue>
-            </Signal>
-            <Signal>
-                <SignalName>BCM_Flg_Stat_BeltsSensor1</SignalName>
-                <LayoutFormat>Motorola</LayoutFormat>
-                <SignalLength>1</SignalLength>
-                <StartBitPosition>16</StartBitPosition>
-                <Resolution>1</Resolution>
-                <Offset>0</Offset>
-                <MinValue>0</MinValue>
-                <MaxValue>1</MaxValue>
-                <DefaultValue>0</DefaultValue>
-                <InvalidValue>-1</InvalidValue>
-            </Signal>
-            <Signal>
-                <SignalName>BCM_Flg_Stat_BeltsSensor2</SignalName>
-                <LayoutFormat>Motorola</LayoutFormat>
-                <SignalLength>1</SignalLength>
-                <StartBitPosition>17</StartBitPosition>
-                <Resolution>1</Resolution>
-                <Offset>0</Offset>
-                <MinValue>0</MinValue>
-                <MaxValue>1</MaxValue>
-                <DefaultValue>0</DefaultValue>
-                <InvalidValue>-1</InvalidValue>
-            </Signal>
-            <Signal>
-                <SignalName>BCM_Flg_Stat_BeltsSensor3</SignalName>
-                <LayoutFormat>Motorola</LayoutFormat>
-                <SignalLength>1</SignalLength>
-                <StartBitPosition>18</StartBitPosition>
-                <Resolution>1</Resolution>
-                <Offset>0</Offset>
-                <MinValue>0</MinValue>
-                <MaxValue>1</MaxValue>
-                <DefaultValue>0</DefaultValue>
-                <InvalidValue>-1</InvalidValue>
-            </Signal>
-            <Signal>
-                <SignalName>BCM_Flg_Stat_BeltsSensor4</SignalName>
-                <LayoutFormat>Motorola</LayoutFormat>
-                <SignalLength>1</SignalLength>
-                <StartBitPosition>19</StartBitPosition>
-                <Resolution>1</Resolution>
-                <Offset>0</Offset>
-                <MinValue>0</MinValue>
-                <MaxValue>1</MaxValue>
-                <DefaultValue>0</DefaultValue>
-                <InvalidValue>-1</InvalidValue>
-            </Signal>
-            <Signal>
-                <SignalName>BCM_Flg_Stat_BeltsSensor5</SignalName>
-                <LayoutFormat>Motorola</LayoutFormat>
-                <SignalLength>1</SignalLength>
-                <StartBitPosition>20</StartBitPosition>
-                <Resolution>1</Resolution>
-                <Offset>0</Offset>
-                <MinValue>0</MinValue>
-                <MaxValue>1</MaxValue>
-                <DefaultValue>0</DefaultValue>
-                <InvalidValue>-1</InvalidValue>
-            </Signal>
-            <Signal>
-                <SignalName>BCM_Flg_Stat_BeltsSensor6</SignalName>
-                <LayoutFormat>Motorola</LayoutFormat>
-                <SignalLength>1</SignalLength>
-                <StartBitPosition>21</StartBitPosition>
-                <Resolution>1</Resolution>
-                <Offset>0</Offset>
-                <MinValue>0</MinValue>
-                <MaxValue>1</MaxValue>
-                <DefaultValue>0</DefaultValue>
-                <InvalidValue>-1</InvalidValue>
-            </Signal>
-            <Signal>
-                <SignalName>BCM_OutsideTemp</SignalName>
-                <LayoutFormat>Motorola</LayoutFormat>
-                <SignalLength>8</SignalLength>
-                <StartBitPosition>24</StartBitPosition>
-                <Resolution>0.5</Resolution>
-                <Offset>0</Offset>
-                <MinValue>0</MinValue>
-                <MaxValue>1</MaxValue>
-                <DefaultValue>0</DefaultValue>
-                <InvalidValue>-1</InvalidValue>
-            </Signal>
-            <Signal>
-                <SignalName>BCM_InsideTemp</SignalName>
-                <LayoutFormat>Motorola</LayoutFormat>
-                <SignalLength>8</SignalLength>
-                <StartBitPosition>32</StartBitPosition>
-                <Resolution>0.5</Resolution>
-                <Offset>-20</Offset>
-                <MinValue>-20</MinValue>
-                <MaxValue>80</MaxValue>
-                <DefaultValue>0</DefaultValue>
-                <InvalidValue>255</InvalidValue>
-            </Signal>
-            <Signal>
-                <SignalName>BCM_ACBlowingLevel</SignalName>
-                <LayoutFormat>Motorola</LayoutFormat>
-                <SignalLength>3</SignalLength>
-                <StartBitPosition>45</StartBitPosition>
-                <Resolution>1</Resolution>
-                <Offset>0</Offset>
-                <MinValue>0</MinValue>
-                <MaxValue>7</MaxValue>
-                <DefaultValue>0</DefaultValue>
-                <InvalidValue>-1</InvalidValue>
-            </Signal>
-            <Signal>
-                <SignalName>BCM_DemisterStatus</SignalName>
-                <LayoutFormat>Motorola</LayoutFormat>
-                <SignalLength>1</SignalLength>
-                <StartBitPosition>44</StartBitPosition>
-                <Resolution>1</Resolution>
-                <Offset>0</Offset>
-                <MinValue>0</MinValue>
-                <MaxValue>1</MaxValue>
-                <DefaultValue>0</DefaultValue>
+                <MaxValue>65535</MaxValue>
+                <DefaultValue>-1</DefaultValue>
                 <InvalidValue>-1</InvalidValue>
             </Signal>
         </SignalList>
@@ -431,7 +443,7 @@
                 <InvalidValue>-1</InvalidValue>
             </Signal>
             <Signal>
-                <SignalName>HMI_Dig_Ord_RearFogLamp</SignalName>
+                <SignalName>HMI_Dig_Ord_FrontFogLamp</SignalName>
                 <LayoutFormat>Motorola</LayoutFormat>
                 <SignalLength>2</SignalLength>
                 <StartBitPosition>8</StartBitPosition>
@@ -443,7 +455,7 @@
                 <InvalidValue>-1</InvalidValue>
             </Signal>
             <Signal>
-                <SignalName>HMI_Dig_Ord_DoorLock</SignalName>
+                <SignalName>HMI_Dig_Ord_RearFogLamp</SignalName>
                 <LayoutFormat>Motorola</LayoutFormat>
                 <SignalLength>2</SignalLength>
                 <StartBitPosition>10</StartBitPosition>
@@ -503,22 +515,10 @@
                 <InvalidValue>6</InvalidValue>
             </Signal>
             <Signal>
-                <SignalName>HMI_Dig_Ord_eBooster_Warning</SignalName>
-                <LayoutFormat>Motorola</LayoutFormat>
-                <SignalLength>1</SignalLength>
-                <StartBitPosition>21</StartBitPosition>
-                <Resolution>1</Resolution>
-                <Offset>0</Offset>
-                <MinValue>0</MinValue>
-                <MaxValue>1</MaxValue>
-                <DefaultValue>0</DefaultValue>
-                <InvalidValue>-1</InvalidValue>
-            </Signal>
-            <Signal>
                 <SignalName>HMI_Dig_Ord_DangerAlarmLamp</SignalName>
                 <LayoutFormat>Motorola</LayoutFormat>
                 <SignalLength>2</SignalLength>
-                <StartBitPosition>22</StartBitPosition>
+                <StartBitPosition>21</StartBitPosition>
                 <Resolution>1</Resolution>
                 <Offset>0</Offset>
                 <MinValue>0</MinValue>
@@ -542,7 +542,7 @@
                 <SignalName>HMI_Dig_Ord_Demister_Control</SignalName>
                 <LayoutFormat>Motorola</LayoutFormat>
                 <SignalLength>2</SignalLength>
-                <StartBitPosition>38</StartBitPosition>
+                <StartBitPosition>36</StartBitPosition>
                 <Resolution>1</Resolution>
                 <Offset>0</Offset>
                 <MinValue>0</MinValue>
@@ -550,65 +550,101 @@
                 <DefaultValue>0</DefaultValue>
                 <InvalidValue>-1</InvalidValue>
             </Signal>
+        </SignalList>
+    </Message>
+    <Message>
+        <Head>
+            <MsgName>HAD5</MsgName>
+            <MsgID>236</MsgID>
+            <MsgSendType>周期</MsgSendType>
+            <MsgCycleTime>1000</MsgCycleTime>
+            <MsgLength>8</MsgLength>
+            <Times>5</Times>
+        </Head>
+        <SignalList>
             <Signal>
-                <SignalName>HMI_Dig_Ord_SystemRuningStatus</SignalName>
+                <SignalName>HAD_CurrentDrivingRoadIDNum</SignalName>
                 <LayoutFormat>Motorola</LayoutFormat>
-                <SignalLength>2</SignalLength>
-                <StartBitPosition>16</StartBitPosition>
+                <SignalLength>8</SignalLength>
+                <StartBitPosition>0</StartBitPosition>
                 <Resolution>1</Resolution>
                 <Offset>0</Offset>
                 <MinValue>0</MinValue>
-                <MaxValue>3</MaxValue>
+                <MaxValue>254</MaxValue>
                 <DefaultValue>0</DefaultValue>
-                <InvalidValue>-1</InvalidValue>
+                <InvalidValue>255</InvalidValue>
             </Signal>
             <Signal>
-                <SignalName>HIM_Dig_Ord_TotalOdmeter</SignalName>
+                <SignalName>HAD_NextStationIDNumb</SignalName>
                 <LayoutFormat>Motorola</LayoutFormat>
-                <SignalLength>20</SignalLength>
+                <SignalLength>8</SignalLength>
+                <StartBitPosition>8</StartBitPosition>
+                <Resolution>1</Resolution>
+                <Offset>0</Offset>
+                <MinValue>0</MinValue>
+                <MaxValue>254</MaxValue>
+                <DefaultValue>0</DefaultValue>
+                <InvalidValue>255</InvalidValue>
+            </Signal>
+            <Signal>
+                <SignalName>HAD_DistanceForNextStation</SignalName>
+                <LayoutFormat>Motorola</LayoutFormat>
+                <SignalLength>16</SignalLength>
+                <StartBitPosition>24</StartBitPosition>
+                <Resolution>0.1</Resolution>
+                <Offset>0</Offset>
+                <MinValue>0</MinValue>
+                <MaxValue>65534</MaxValue>
+                <DefaultValue>0</DefaultValue>
+                <InvalidValue>65535</InvalidValue>
+            </Signal>
+            <Signal>
+                <SignalName>HAD_TimeForArrivingNextStation</SignalName>
+                <LayoutFormat>Motorola</LayoutFormat>
+                <SignalLength>8</SignalLength>
+                <StartBitPosition>32</StartBitPosition>
+                <Resolution>1</Resolution>
+                <Offset>0</Offset>
+                <MinValue>0</MinValue>
+                <MaxValue>254</MaxValue>
+                <DefaultValue>0</DefaultValue>
+                <InvalidValue>255</InvalidValue>
+            </Signal>
+            <Signal>
+                <SignalName>HAD_StartingSiteNum</SignalName>
+                <LayoutFormat>Motorola</LayoutFormat>
+                <SignalLength>8</SignalLength>
+                <StartBitPosition>40</StartBitPosition>
+                <Resolution>1</Resolution>
+                <Offset>0</Offset>
+                <MinValue>0</MinValue>
+                <MaxValue>254</MaxValue>
+                <DefaultValue>0</DefaultValue>
+                <InvalidValue>255</InvalidValue>
+            </Signal>
+            <Signal>
+                <SignalName>HAD_EndingSiteNum</SignalName>
+                <LayoutFormat>Motorola</LayoutFormat>
+                <SignalLength>8</SignalLength>
                 <StartBitPosition>48</StartBitPosition>
                 <Resolution>1</Resolution>
                 <Offset>0</Offset>
                 <MinValue>0</MinValue>
-                <MaxValue>999999</MaxValue>
-                <DefaultValue>-1</DefaultValue>
-                <InvalidValue>-1</InvalidValue>
-            </Signal>
-            <Signal>
-                <SignalName>HIM_Dig_Ord_AutoParkingControl</SignalName>
-                <LayoutFormat>Motorola</LayoutFormat>
-                <SignalLength>2</SignalLength>
-                <StartBitPosition>62</StartBitPosition>
-                <Resolution>1</Resolution>
-                <Offset>0</Offset>
-                <MinValue>0</MinValue>
-                <MaxValue>3</MaxValue>
+                <MaxValue>254</MaxValue>
                 <DefaultValue>0</DefaultValue>
-                <InvalidValue>2</InvalidValue>
+                <InvalidValue>255</InvalidValue>
             </Signal>
             <Signal>
-                <SignalName>HMI_Dig_ProjectorModeSetting</SignalName>
+                <SignalName>HAD_PassingBySiteNum</SignalName>
                 <LayoutFormat>Motorola</LayoutFormat>
-                <SignalLength>1</SignalLength>
-                <StartBitPosition>61</StartBitPosition>
-                <Resolution>1</Resolution>
-                <Offset>0</Offset>
-                <MinValue>0</MinValue>
-                <MaxValue>1</MaxValue>
-                <DefaultValue>0</DefaultValue>
-                <InvalidValue>-1</InvalidValue>
-            </Signal>
-            <Signal>
-                <SignalName>HMI_Dig_ProjectorVolumnSetting</SignalName>
-                <LayoutFormat>Motorola</LayoutFormat>
-                <SignalLength>5</SignalLength>
+                <SignalLength>8</SignalLength>
                 <StartBitPosition>56</StartBitPosition>
                 <Resolution>1</Resolution>
                 <Offset>0</Offset>
                 <MinValue>0</MinValue>
-                <MaxValue>31</MaxValue>
-                <DefaultValue>31</DefaultValue>
-                <InvalidValue>-1</InvalidValue>
+                <MaxValue>254</MaxValue>
+                <DefaultValue>0</DefaultValue>
+                <InvalidValue>255</InvalidValue>
             </Signal>
         </SignalList>
     </Message>
