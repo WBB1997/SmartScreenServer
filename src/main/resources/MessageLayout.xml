@@ -14,7 +14,6 @@
                 <SignalName>VCU_ACWorkingStatus</SignalName>
                 <LayoutFormat>Motorola</LayoutFormat>
                 <SignalLength>2</SignalLength>
-                <StartBytePosition>4</StartBytePosition>
                 <StartBitPosition>33</StartBitPosition>
                 <Resolution>1</Resolution>
                 <Offset>0</Offset>
@@ -39,7 +38,6 @@
                 <SignalName>can_state_GearPos</SignalName>
                 <LayoutFormat>Intel</LayoutFormat>
                 <SignalLength>4</SignalLength>
-                <StartBytePosition>2</StartBytePosition>
                 <StartBitPosition>16</StartBitPosition>
                 <Resolution>1</Resolution>
                 <Offset>0</Offset>
@@ -64,7 +62,6 @@
                 <SignalName>BCM_Dig_Ord_HandLightCtr</SignalName>
                 <LayoutFormat>Motorola</LayoutFormat>
                 <SignalLength>1</SignalLength>
-                <StartBytePosition>0</StartBytePosition>
                 <StartBitPosition>0</StartBitPosition>
                 <Resolution>1</Resolution>
                 <Offset>0</Offset>
@@ -77,7 +74,6 @@
                 <SignalName>BCM_Flg_Stat_LeftTurningLamp</SignalName>
                 <LayoutFormat>Motorola</LayoutFormat>
                 <SignalLength>1</SignalLength>
-                <StartBytePosition>0</StartBytePosition>
                 <StartBitPosition>1</StartBitPosition>
                 <Resolution>1</Resolution>
                 <Offset>0</Offset>
@@ -90,7 +86,6 @@
                 <SignalName>BCM_Flg_Stat_RightTurningLamp</SignalName>
                 <LayoutFormat>Motorola</LayoutFormat>
                 <SignalLength>1</SignalLength>
-                <StartBytePosition>0</StartBytePosition>
                 <StartBitPosition>2</StartBitPosition>
                 <Resolution>1</Resolution>
                 <Offset>0</Offset>
@@ -103,7 +98,6 @@
                 <SignalName>BCM_Flg_Stat_HandLightCtr</SignalName>
                 <LayoutFormat>Motorola</LayoutFormat>
                 <SignalLength>1</SignalLength>
-                <StartBytePosition>0</StartBytePosition>
                 <StartBitPosition>3</StartBitPosition>
                 <Resolution>1</Resolution>
                 <Offset>0</Offset>
@@ -116,7 +110,6 @@
                 <SignalName>BCM_Flg_Stat_HighBeam</SignalName>
                 <LayoutFormat>Motorola</LayoutFormat>
                 <SignalLength>1</SignalLength>
-                <StartBytePosition>0</StartBytePosition>
                 <StartBitPosition>4</StartBitPosition>
                 <Resolution>1</Resolution>
                 <Offset>0</Offset>
@@ -129,7 +122,6 @@
                 <SignalName>BCM_Flg_Stat_LowBeam</SignalName>
                 <LayoutFormat>Motorola</LayoutFormat>
                 <SignalLength>1</SignalLength>
-                <StartBytePosition>0</StartBytePosition>
                 <StartBitPosition>5</StartBitPosition>
                 <Resolution>1</Resolution>
                 <Offset>0</Offset>
@@ -142,7 +134,6 @@
                 <SignalName>BCM_Flg_Stat_RearFogLamp</SignalName>
                 <LayoutFormat>Motorola</LayoutFormat>
                 <SignalLength>1</SignalLength>
-                <StartBytePosition>0</StartBytePosition>
                 <StartBitPosition>6</StartBitPosition>
                 <Resolution>1</Resolution>
                 <Offset>0</Offset>
@@ -155,7 +146,6 @@
                 <SignalName>BCM_Flg_Stat_DangerAlarmLamp</SignalName>
                 <LayoutFormat>Motorola</LayoutFormat>
                 <SignalLength>1</SignalLength>
-                <StartBytePosition>0</StartBytePosition>
                 <StartBitPosition>7</StartBitPosition>
                 <Resolution>1</Resolution>
                 <Offset>0</Offset>
@@ -168,7 +158,6 @@
                 <SignalName>BCM_Flg_Stat_BrakeLamp</SignalName>
                 <LayoutFormat>Motorola</LayoutFormat>
                 <SignalLength>1</SignalLength>
-                <StartBytePosition>1</StartBytePosition>
                 <StartBitPosition>8</StartBitPosition>
                 <Resolution>1</Resolution>
                 <Offset>0</Offset>
@@ -181,7 +170,6 @@
                 <SignalName>BCM_Flg_Stat_BackupLamp</SignalName>
                 <LayoutFormat>Motorola</LayoutFormat>
                 <SignalLength>1</SignalLength>
-                <StartBytePosition>1</StartBytePosition>
                 <StartBitPosition>9</StartBitPosition>
                 <Resolution>1</Resolution>
                 <Offset>0</Offset>
@@ -194,7 +182,6 @@
                 <SignalName>BCM_Flg_Stat_SeatSensor1</SignalName>
                 <LayoutFormat>Motorola</LayoutFormat>
                 <SignalLength>1</SignalLength>
-                <StartBytePosition>1</StartBytePosition>
                 <StartBitPosition>10</StartBitPosition>
                 <Resolution>1</Resolution>
                 <Offset>0</Offset>
@@ -207,7 +194,6 @@
                 <SignalName>BCM_Flg_Stat_SeatSensor2</SignalName>
                 <LayoutFormat>Motorola</LayoutFormat>
                 <SignalLength>1</SignalLength>
-                <StartBytePosition>1</StartBytePosition>
                 <StartBitPosition>11</StartBitPosition>
                 <Resolution>1</Resolution>
                 <Offset>0</Offset>
@@ -220,7 +206,6 @@
                 <SignalName>BCM_Flg_Stat_SeatSensor3</SignalName>
                 <LayoutFormat>Motorola</LayoutFormat>
                 <SignalLength>1</SignalLength>
-                <StartBytePosition>1</StartBytePosition>
                 <StartBitPosition>12</StartBitPosition>
                 <Resolution>1</Resolution>
                 <Offset>0</Offset>
@@ -233,7 +218,6 @@
                 <SignalName>BCM_Flg_Stat_SeatSensor4</SignalName>
                 <LayoutFormat>Motorola</LayoutFormat>
                 <SignalLength>1</SignalLength>
-                <StartBytePosition>1</StartBytePosition>
                 <StartBitPosition>13</StartBitPosition>
                 <Resolution>1</Resolution>
                 <Offset>0</Offset>
@@ -246,7 +230,6 @@
                 <SignalName>BCM_Flg_Stat_SeatSensor5</SignalName>
                 <LayoutFormat>Motorola</LayoutFormat>
                 <SignalLength>1</SignalLength>
-                <StartBytePosition>1</StartBytePosition>
                 <StartBitPosition>14</StartBitPosition>
                 <Resolution>1</Resolution>
                 <Offset>0</Offset>
@@ -259,7 +242,6 @@
                 <SignalName>BCM_Flg_Stat_SeatSensor6</SignalName>
                 <LayoutFormat>Motorola</LayoutFormat>
                 <SignalLength>1</SignalLength>
-                <StartBytePosition>1</StartBytePosition>
                 <StartBitPosition>15</StartBitPosition>
                 <Resolution>1</Resolution>
                 <Offset>0</Offset>
@@ -272,7 +254,6 @@
                 <SignalName>BCM_Flg_Stat_BeltsSensor1</SignalName>
                 <LayoutFormat>Motorola</LayoutFormat>
                 <SignalLength>1</SignalLength>
-                <StartBytePosition>2</StartBytePosition>
                 <StartBitPosition>16</StartBitPosition>
                 <Resolution>1</Resolution>
                 <Offset>0</Offset>
@@ -285,7 +266,6 @@
                 <SignalName>BCM_Flg_Stat_BeltsSensor2</SignalName>
                 <LayoutFormat>Motorola</LayoutFormat>
                 <SignalLength>1</SignalLength>
-                <StartBytePosition>2</StartBytePosition>
                 <StartBitPosition>17</StartBitPosition>
                 <Resolution>1</Resolution>
                 <Offset>0</Offset>
@@ -298,7 +278,6 @@
                 <SignalName>BCM_Flg_Stat_BeltsSensor3</SignalName>
                 <LayoutFormat>Motorola</LayoutFormat>
                 <SignalLength>1</SignalLength>
-                <StartBytePosition>2</StartBytePosition>
                 <StartBitPosition>18</StartBitPosition>
                 <Resolution>1</Resolution>
                 <Offset>0</Offset>
@@ -311,7 +290,6 @@
                 <SignalName>BCM_Flg_Stat_BeltsSensor4</SignalName>
                 <LayoutFormat>Motorola</LayoutFormat>
                 <SignalLength>1</SignalLength>
-                <StartBytePosition>2</StartBytePosition>
                 <StartBitPosition>19</StartBitPosition>
                 <Resolution>1</Resolution>
                 <Offset>0</Offset>
@@ -324,7 +302,6 @@
                 <SignalName>BCM_Flg_Stat_BeltsSensor5</SignalName>
                 <LayoutFormat>Motorola</LayoutFormat>
                 <SignalLength>1</SignalLength>
-                <StartBytePosition>2</StartBytePosition>
                 <StartBitPosition>20</StartBitPosition>
                 <Resolution>1</Resolution>
                 <Offset>0</Offset>
@@ -337,7 +314,6 @@
                 <SignalName>BCM_Flg_Stat_BeltsSensor6</SignalName>
                 <LayoutFormat>Motorola</LayoutFormat>
                 <SignalLength>1</SignalLength>
-                <StartBytePosition>2</StartBytePosition>
                 <StartBitPosition>21</StartBitPosition>
                 <Resolution>1</Resolution>
                 <Offset>0</Offset>
@@ -350,7 +326,6 @@
                 <SignalName>BCM_OutsideTemp</SignalName>
                 <LayoutFormat>Motorola</LayoutFormat>
                 <SignalLength>8</SignalLength>
-                <StartBytePosition>3</StartBytePosition>
                 <StartBitPosition>24</StartBitPosition>
                 <Resolution>0.5</Resolution>
                 <Offset>0</Offset>
@@ -363,7 +338,6 @@
                 <SignalName>BCM_InsideTemp</SignalName>
                 <LayoutFormat>Motorola</LayoutFormat>
                 <SignalLength>8</SignalLength>
-                <StartBytePosition>4</StartBytePosition>
                 <StartBitPosition>32</StartBitPosition>
                 <Resolution>0.5</Resolution>
                 <Offset>-20</Offset>
@@ -376,7 +350,6 @@
                 <SignalName>BCM_ACBlowingLevel</SignalName>
                 <LayoutFormat>Motorola</LayoutFormat>
                 <SignalLength>3</SignalLength>
-                <StartBytePosition>5</StartBytePosition>
                 <StartBitPosition>45</StartBitPosition>
                 <Resolution>1</Resolution>
                 <Offset>0</Offset>
@@ -389,7 +362,6 @@
                 <SignalName>BCM_DemisterStatus</SignalName>
                 <LayoutFormat>Motorola</LayoutFormat>
                 <SignalLength>1</SignalLength>
-                <StartBytePosition>5</StartBytePosition>
                 <StartBitPosition>44</StartBitPosition>
                 <Resolution>1</Resolution>
                 <Offset>0</Offset>
@@ -414,7 +386,6 @@
                 <SignalName>HMI_Dig_Ord_HighBeam</SignalName>
                 <LayoutFormat>Motorola</LayoutFormat>
                 <SignalLength>2</SignalLength>
-                <StartBytePosition>0</StartBytePosition>
                 <StartBitPosition>0</StartBitPosition>
                 <Resolution>1</Resolution>
                 <Offset>0</Offset>
@@ -427,7 +398,6 @@
                 <SignalName>HMI_Dig_Ord_LoWBeam</SignalName>
                 <LayoutFormat>Motorola</LayoutFormat>
                 <SignalLength>2</SignalLength>
-                <StartBytePosition>0</StartBytePosition>
                 <StartBitPosition>2</StartBitPosition>
                 <Resolution>1</Resolution>
                 <Offset>0</Offset>
@@ -440,7 +410,6 @@
                 <SignalName>HMI_Dig_Ord_LeftTurningLamp</SignalName>
                 <LayoutFormat>Motorola</LayoutFormat>
                 <SignalLength>2</SignalLength>
-                <StartBytePosition>0</StartBytePosition>
                 <StartBitPosition>4</StartBitPosition>
                 <Resolution>1</Resolution>
                 <Offset>0</Offset>
@@ -453,7 +422,6 @@
                 <SignalName>HMI_Dig_Ord_RightTurningLamp</SignalName>
                 <LayoutFormat>Motorola</LayoutFormat>
                 <SignalLength>2</SignalLength>
-                <StartBytePosition>0</StartBytePosition>
                 <StartBitPosition>6</StartBitPosition>
                 <Resolution>1</Resolution>
                 <Offset>0</Offset>
@@ -466,7 +434,6 @@
                 <SignalName>HMI_Dig_Ord_RearFogLamp</SignalName>
                 <LayoutFormat>Motorola</LayoutFormat>
                 <SignalLength>2</SignalLength>
-                <StartBytePosition>1</StartBytePosition>
                 <StartBitPosition>8</StartBitPosition>
                 <Resolution>1</Resolution>
                 <Offset>0</Offset>
@@ -479,7 +446,6 @@
                 <SignalName>HMI_Dig_Ord_DoorLock</SignalName>
                 <LayoutFormat>Motorola</LayoutFormat>
                 <SignalLength>2</SignalLength>
-                <StartBytePosition>1</StartBytePosition>
                 <StartBitPosition>10</StartBitPosition>
                 <Resolution>1</Resolution>
                 <Offset>0</Offset>
@@ -492,7 +458,6 @@
                 <SignalName>HMI_Dig_Ord_Alam</SignalName>
                 <LayoutFormat>Motorola</LayoutFormat>
                 <SignalLength>2</SignalLength>
-                <StartBytePosition>1</StartBytePosition>
                 <StartBitPosition>12</StartBitPosition>
                 <Resolution>1</Resolution>
                 <Offset>0</Offset>
@@ -505,7 +470,6 @@
                 <SignalName>HMI_Dig_Ord_Driver_model</SignalName>
                 <LayoutFormat>Motorola</LayoutFormat>
                 <SignalLength>2</SignalLength>
-                <StartBytePosition>1</StartBytePosition>
                 <StartBitPosition>14</StartBitPosition>
                 <Resolution>1</Resolution>
                 <Offset>0</Offset>
@@ -518,7 +482,6 @@
                 <SignalName>HMI_Dig_Ord_air_model</SignalName>
                 <LayoutFormat>Motorola</LayoutFormat>
                 <SignalLength>2</SignalLength>
-                <StartBytePosition>2</StartBytePosition>
                 <StartBitPosition>16</StartBitPosition>
                 <Resolution>1</Resolution>
                 <Offset>0</Offset>
@@ -531,7 +494,6 @@
                 <SignalName>HMI_Dig_Ord_air_grade</SignalName>
                 <LayoutFormat>Motorola</LayoutFormat>
                 <SignalLength>3</SignalLength>
-                <StartBytePosition>2</StartBytePosition>
                 <StartBitPosition>18</StartBitPosition>
                 <Resolution>1</Resolution>
                 <Offset>0</Offset>
@@ -544,7 +506,6 @@
                 <SignalName>HMI_Dig_Ord_eBooster_Warning</SignalName>
                 <LayoutFormat>Motorola</LayoutFormat>
                 <SignalLength>1</SignalLength>
-                <StartBytePosition>2</StartBytePosition>
                 <StartBitPosition>21</StartBitPosition>
                 <Resolution>1</Resolution>
                 <Offset>0</Offset>
@@ -557,7 +518,6 @@
                 <SignalName>HMI_Dig_Ord_DangerAlarmLamp</SignalName>
                 <LayoutFormat>Motorola</LayoutFormat>
                 <SignalLength>2</SignalLength>
-                <StartBytePosition>2</StartBytePosition>
                 <StartBitPosition>22</StartBitPosition>
                 <Resolution>1</Resolution>
                 <Offset>0</Offset>
@@ -570,7 +530,6 @@
                 <SignalName>HMI_Dig_Ord_FANPWM_Control</SignalName>
                 <LayoutFormat>Motorola</LayoutFormat>
                 <SignalLength>8</SignalLength>
-                <StartBytePosition>3</StartBytePosition>
                 <StartBitPosition>24</StartBitPosition>
                 <Resolution>1</Resolution>
                 <Offset>0</Offset>
@@ -583,7 +542,6 @@
                 <SignalName>HMI_Dig_Ord_Demister_Control</SignalName>
                 <LayoutFormat>Motorola</LayoutFormat>
                 <SignalLength>2</SignalLength>
-                <StartBytePosition>4</StartBytePosition>
                 <StartBitPosition>38</StartBitPosition>
                 <Resolution>1</Resolution>
                 <Offset>0</Offset>
@@ -596,7 +554,6 @@
                 <SignalName>HMI_Dig_Ord_SystemRuningStatus</SignalName>
                 <LayoutFormat>Motorola</LayoutFormat>
                 <SignalLength>2</SignalLength>
-                <StartBytePosition>4</StartBytePosition>
                 <StartBitPosition>16</StartBitPosition>
                 <Resolution>1</Resolution>
                 <Offset>0</Offset>
@@ -609,7 +566,6 @@
                 <SignalName>HIM_Dig_Ord_TotalOdmeter</SignalName>
                 <LayoutFormat>Motorola</LayoutFormat>
                 <SignalLength>20</SignalLength>
-                <StartBytePosition>6</StartBytePosition>
                 <StartBitPosition>48</StartBitPosition>
                 <Resolution>1</Resolution>
                 <Offset>0</Offset>
@@ -622,7 +578,6 @@
                 <SignalName>HIM_Dig_Ord_AutoParkingControl</SignalName>
                 <LayoutFormat>Motorola</LayoutFormat>
                 <SignalLength>2</SignalLength>
-                <StartBytePosition>7</StartBytePosition>
                 <StartBitPosition>62</StartBitPosition>
                 <Resolution>1</Resolution>
                 <Offset>0</Offset>
@@ -635,7 +590,6 @@
                 <SignalName>HMI_Dig_ProjectorModeSetting</SignalName>
                 <LayoutFormat>Motorola</LayoutFormat>
                 <SignalLength>1</SignalLength>
-                <StartBytePosition>7</StartBytePosition>
                 <StartBitPosition>61</StartBitPosition>
                 <Resolution>1</Resolution>
                 <Offset>0</Offset>
@@ -648,7 +602,6 @@
                 <SignalName>HMI_Dig_ProjectorVolumnSetting</SignalName>
                 <LayoutFormat>Motorola</LayoutFormat>
                 <SignalLength>5</SignalLength>
-                <StartBytePosition>7</StartBytePosition>
                 <StartBitPosition>56</StartBitPosition>
                 <Resolution>1</Resolution>
                 <Offset>0</Offset>

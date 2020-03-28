@@ -4,7 +4,6 @@ public class Signal {
     private String SignalName;
     private String LayoutFormat;
     private int SignalLength;
-    private int StartBytePosition;
     private int StartBitPosition;
     private double Resolution;
     private int Offset;
@@ -39,14 +38,6 @@ public class Signal {
 
     public void setSignalLength(int signalLength) {
         SignalLength = signalLength;
-    }
-
-    public int getStartBytePosition() {
-        return StartBytePosition;
-    }
-
-    public void setStartBytePosition(int startBytePosition) {
-        StartBytePosition = startBytePosition;
     }
 
     public int getStartBitPosition() {

@@ -64,6 +64,7 @@ public class DataConvert {
     public void getJSONString(byte[] bytes, JSONStreamListener jsonStreamListener) {
         try {
             String key = ByteUtil.bytesToHex(copyOfRange(bytes, 8, 10));
+            // 从第一个前导0开始一直到结尾截取字符串
             String sampleKey = key.substring(key.charAt('0'));
             // 报文段
             Message message = messageMap.get(sampleKey);
