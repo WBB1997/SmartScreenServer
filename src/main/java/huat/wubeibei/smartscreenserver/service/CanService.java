@@ -8,6 +8,9 @@ import huat.wubeibei.candataconvert.JSONStreamListener;
 import huat.wubeibei.smartscreenserver.eventbus.MessageWrap;
 import huat.wubeibei.smartscreenserver.eventbus.MyEventBus;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
@@ -21,14 +24,18 @@ public class CanService {
     private final static int sendPort = 9988;
 //    private final static String CANIp = "192.168.1.60"; // CAN总线IP地址
     private final static String CANIp = "127.0.0.1"; // CAN总线IP地址
-    private final static int MessageLength = 14;
+    private final static int MessageLength = 10;
     private final Thread CanReceiveThread = new Thread(new CanReceive()); // CAN总线接收线程
     private final ExecutorService singleThreadExecutor = Executors.newSingleThreadExecutor(); // 发送线程池，保持发送顺序
 
 
     // 初始化
     public CanService() {
-        dataConvert = new DataConvert();
+        try {
+            dataConvert = new DataConvert(new FileInputStream(new File("src/main/resources/MessageLayout.xml")));
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
     }
 
     // 启动接收
