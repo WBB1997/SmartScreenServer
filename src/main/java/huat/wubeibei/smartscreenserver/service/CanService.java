@@ -3,22 +3,17 @@ package huat.wubeibei.smartscreenserver.service;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.google.common.eventbus.Subscribe;
-import huat.wubeibei.smartscreenserver.DataConvert;
-import huat.wubeibei.smartscreenserver.JSONStreamListener;
+import huat.wubeibei.candataconvert.DataConvert;
+import huat.wubeibei.candataconvert.JSONStreamListener;
 import huat.wubeibei.smartscreenserver.eventbus.MessageWrap;
 import huat.wubeibei.smartscreenserver.eventbus.MyEventBus;
 
 import java.io.IOException;
-import java.io.InputStream;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.InetAddress;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
-
-
-import static huat.wubeibei.smartscreenserver.util.ByteUtil.bytesToHex;
-import static java.util.Arrays.copyOfRange;
 
 public class CanService {
     private DataConvert dataConvert;
@@ -32,9 +27,8 @@ public class CanService {
 
 
     // 初始化
-    public CanService(InputStream config) {
-        dataConvert = new DataConvert(config);
-        System.out.println("CanReceiveResource load success!");
+    public CanService() {
+        dataConvert = new DataConvert();
     }
 
     // 启动接收

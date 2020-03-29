@@ -8,9 +8,6 @@
     <artifactId>SmartScreenServer</artifactId>
     <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
-    <modules>
-        <module>can</module>
-    </modules>
 
     <dependencies>
         <dependency>
@@ -38,12 +35,16 @@
         </dependency>
 
         <dependency>
+            <groupId>dom4j</groupId>
+            <artifactId>dom4j</artifactId>
+            <version>1.6.1</version>
+        </dependency>
+        <dependency>
             <groupId>huat.wubeibei</groupId>
-            <artifactId>can</artifactId>
+            <artifactId>CANDataConvert</artifactId>
             <version>1.0-SNAPSHOT</version>
             <scope>compile</scope>
         </dependency>
-
     </dependencies>
 
 

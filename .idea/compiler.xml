@@ -6,8 +6,13 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="can" />
+        <module name="CANDataConvert" />
+        <module name="iii" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="can" target="1.8" />
+      <module name="iii" target="1.5" />
+    </bytecodeTargetLevel>
   </component>
 </project>
