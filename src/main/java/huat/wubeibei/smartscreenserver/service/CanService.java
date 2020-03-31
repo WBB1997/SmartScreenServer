@@ -21,7 +21,7 @@ import java.util.concurrent.Executors;
 public class CanService {
     private DataConvert dataConvert;
     private final static int receivePort = 8888;
-    private final static int sendPort = 9988;
+    private final static int sendPort = 9999;
 //    private final static String CANIp = "192.168.1.60"; // CAN总线IP地址
     private final static String CANIp = "127.0.0.1"; // CAN总线IP地址
     private final static int MessageLength = 10;
@@ -37,6 +37,8 @@ public class CanService {
             e.printStackTrace();
         }
     }
+
+
 
     // 启动接收
     public void start() {
