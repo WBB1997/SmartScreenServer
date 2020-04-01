@@ -20,10 +20,9 @@ import java.util.concurrent.Executors;
 
 public class CanService {
     private DataConvert dataConvert;
-    private final static int receivePort = 8888;
-    private final static int sendPort = 9999;
-//    private final static String CANIp = "192.168.1.60"; // CAN总线IP地址
-    private final static String CANIp = "127.0.0.1"; // CAN总线IP地址
+    private final static int receivePort = 9999;
+    private final static int sendPort = 8888;
+    private final static String CANIp = "192.168.0.100"; // CAN总线IP地址
     private final static int MessageLength = 10;
     private final Thread CanReceiveThread = new Thread(new CanReceive()); // CAN总线接收线程
     private final ExecutorService singleThreadExecutor = Executors.newSingleThreadExecutor(); // 发送线程池，保持发送顺序
@@ -39,12 +38,11 @@ public class CanService {
     }
 
 
-
     // 启动接收
     public void start() {
         if (dataConvert != null) {
-            System.out.println("CanReceiveThread Start listening!");
             CanReceiveThread.start();
+            System.out.println("CanReceiveThread Start listening!");
         }
     }
 
@@ -67,24 +65,27 @@ public class CanService {
     }
 
     // 修改信号值
-    private void setSignalValue(String msgName, String signalName, double value){
-        dataConvert.setSignalValue(msgName,signalName,value);
+    private void setSignalValue(String msgName, String signalName, double value) {
+        dataConvert.setSignalValue(msgName, signalName, value);
     }
 
     // 接收Client发来的指令
     @Subscribe
     public void messageEventBus(MessageWrap messageWrap) {
-        JSONObject jsonObject = JSON.parseObject(messageWrap.getMessage());
-        String action = jsonObject.getString("action");
-        JSONObject data = jsonObject.getJSONObject("data");
-        System.out.println("CanService EventBus receive: " + jsonObject);
-        switch (action) {
-            case "send":
-                sendData(data.toJSONString());
-                break;
-            case "modify":
-                setSignalValue(data.getString("msg_name"), data.getString("signal_name"), data.getDoubleValue("value"));
-                break;
+        try {
+            JSONObject jsonObject = JSON.parseObject(messageWrap.getMessage());
+            String action = jsonObject.getString("action");
+            JSONObject data = jsonObject.getJSONObject("data");
+            switch (action) {
+                case "send":
+                    sendData(data.toJSONString());
+                    break;
+                case "modify":
+                    setSignalValue(data.getString("msg_name"), data.getString("signal_name"), data.getDoubleValue("value"));
+                    break;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 
@@ -101,16 +102,14 @@ public class CanService {
                 while (true) {
                     datagramPacket = new DatagramPacket(receiveMsg, receiveMsg.length);
                     datagramSocket.receive(datagramPacket);
-//                    String check;
-//                    check = bytesToHex(copyOfRange(receiveMsg, 0, 2));
-//                    if (!check.equals("aabb")) {
-//                        return;
-//                    }
                     dataConvert.getJSONString(receiveMsg, new JSONStreamListener() {
                         @Override
                         public void produce(String json) {
                             // 产生JSON数据流，放入EventBus，转发给客户端
-                            MyEventBus.post(MessageWrap.getBean(json));
+                            JSONObject object = new JSONObject();
+                            object.put("action", "instruction");
+                            object.put("data", JSONObject.parseObject(json));
+                            MyEventBus.post(MessageWrap.getBean(object.toJSONString()));
                         }
 
                         @Override
@@ -121,6 +120,7 @@ public class CanService {
                         @Override
                         public void onError(Throwable e) {
                             // 出现异常的动作
+                            e.printStackTrace();
                         }
                     });
                 }

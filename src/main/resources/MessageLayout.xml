@@ -259,7 +259,7 @@
                 <Offset>0</Offset>
                 <MinValue>0</MinValue>
                 <MaxValue>1</MaxValue>
-                <DefaultValue>0</DefaultValue>
+                <DefaultValue>-1</DefaultValue>
                 <InvalidValue>-1</InvalidValue>
             </Signal>
             <Signal>
@@ -271,7 +271,7 @@
                 <Offset>0</Offset>
                 <MinValue>0</MinValue>
                 <MaxValue>1</MaxValue>
-                <DefaultValue>0</DefaultValue>
+                <DefaultValue>-1</DefaultValue>
                 <InvalidValue>-1</InvalidValue>
             </Signal>
             <Signal>
@@ -283,7 +283,7 @@
                 <Offset>0</Offset>
                 <MinValue>0</MinValue>
                 <MaxValue>1</MaxValue>
-                <DefaultValue>0</DefaultValue>
+                <DefaultValue>-1</DefaultValue>
                 <InvalidValue>-1</InvalidValue>
             </Signal>
             <Signal>
@@ -295,7 +295,7 @@
                 <Offset>0</Offset>
                 <MinValue>0</MinValue>
                 <MaxValue>1</MaxValue>
-                <DefaultValue>0</DefaultValue>
+                <DefaultValue>-1</DefaultValue>
                 <InvalidValue>-1</InvalidValue>
             </Signal>
             <Signal>
@@ -307,7 +307,7 @@
                 <Offset>0</Offset>
                 <MinValue>0</MinValue>
                 <MaxValue>1</MaxValue>
-                <DefaultValue>0</DefaultValue>
+                <DefaultValue>-1</DefaultValue>
                 <InvalidValue>-1</InvalidValue>
             </Signal>
             <Signal>
@@ -319,7 +319,7 @@
                 <Offset>0</Offset>
                 <MinValue>0</MinValue>
                 <MaxValue>1</MaxValue>
-                <DefaultValue>0</DefaultValue>
+                <DefaultValue>-1</DefaultValue>
                 <InvalidValue>-1</InvalidValue>
             </Signal>
             <Signal>
@@ -331,14 +331,14 @@
                 <Offset>0</Offset>
                 <MinValue>0</MinValue>
                 <MaxValue>1</MaxValue>
-                <DefaultValue>0</DefaultValue>
+                <DefaultValue>-1</DefaultValue>
                 <InvalidValue>-1</InvalidValue>
             </Signal>
             <Signal>
                 <SignalName>BCM_ACBlowingLevel</SignalName>
                 <LayoutFormat>Motorola</LayoutFormat>
                 <SignalLength>3</SignalLength>
-                <StartBitPosition>9</StartBitPosition>
+                <StartBitPosition>8</StartBitPosition>
                 <Resolution>1</Resolution>
                 <Offset>0</Offset>
                 <MinValue>0</MinValue>
@@ -350,12 +350,12 @@
                 <SignalName>BCM_DemisterStatus</SignalName>
                 <LayoutFormat>Motorola</LayoutFormat>
                 <SignalLength>1</SignalLength>
-                <StartBitPosition>10</StartBitPosition>
+                <StartBitPosition>7</StartBitPosition>
                 <Resolution>1</Resolution>
                 <Offset>0</Offset>
                 <MinValue>0</MinValue>
                 <MaxValue>1</MaxValue>
-                <DefaultValue>0</DefaultValue>
+                <DefaultValue>-1</DefaultValue>
                 <InvalidValue>-1</InvalidValue>
             </Signal>
         </SignalList>

@@ -86,6 +86,7 @@ public class RemoteService {
             // 收到的JSON串
             JSONObject jsonObject = JSON.parseObject(str);
             String action = jsonObject.getString("action");
+            System.out.println(str);
             // 处理消息
             switch (action) {
                 case "login":
@@ -116,7 +117,16 @@ public class RemoteService {
     // 接收EventBus传递的事件（CanService->RemoteService）
     @Subscribe
     public void messageEventBus(MessageWrap messageWrap) {
-        send(messageWrap.getMessage(), connectionIp);
+        try {
+            JSONObject jsonObject = JSON.parseObject(messageWrap.getMessage());
+            String action = jsonObject.getString("action");
+            if ("instruction".equals(action)) {
+                System.out.println("RemoteService->Client " + messageWrap.getMessage());
+                send(jsonObject.toJSONString(), mClientList.get(connectionIp));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     // 发送给客户端
@@ -126,6 +136,8 @@ public class RemoteService {
         if (client != null) {
             System.out.println(str);
             client.send(MessageWrap.getBean(str));
+        }else{
+            System.out.println("No Ip Find");
         }
     }
 
