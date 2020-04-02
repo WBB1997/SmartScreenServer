@@ -4,7 +4,7 @@
         <Head>
             <MsgName>VCU1</MsgName>
             <MsgID>222</MsgID>
-            <MsgSendType>周期</MsgSendType>
+            <MsgSendType>h</MsgSendType>
             <MsgCycleTime>10</MsgCycleTime>
             <MsgLength>8</MsgLength>
             <Times>5</Times>
@@ -28,22 +28,22 @@
         <Head>
             <MsgName>VCU2</MsgName>
             <MsgID>220</MsgID>
-            <MsgSendType>周期</MsgSendType>
+            <MsgSendType>h</MsgSendType>
             <MsgCycleTime>10</MsgCycleTime>
             <MsgLength>8</MsgLength>
             <Times>5</Times>
         </Head>
         <SignalList>
             <Signal>
-                <SignalName>can_state_GearPos</SignalName>
+                <SignalName>can_RemainKm</SignalName>
                 <LayoutFormat>Intel</LayoutFormat>
-                <SignalLength>4</SignalLength>
+                <SignalLength>16</SignalLength>
                 <StartBitPosition>16</StartBitPosition>
-                <Resolution>1</Resolution>
+                <Resolution>0.1</Resolution>
                 <Offset>0</Offset>
                 <MinValue>0</MinValue>
-                <MaxValue>7</MaxValue>
-                <DefaultValue>4</DefaultValue>
+                <MaxValue>1000</MaxValue>
+                <DefaultValue>-1</DefaultValue>
                 <InvalidValue>-1</InvalidValue>
             </Signal>
         </SignalList>
@@ -52,7 +52,7 @@
         <Head>
             <MsgName>BMS1</MsgName>
             <MsgID>260</MsgID>
-            <MsgSendType>周期</MsgSendType>
+            <MsgSendType>h</MsgSendType>
             <MsgCycleTime>100</MsgCycleTime>
             <MsgLength>8</MsgLength>
             <Times>5</Times>
@@ -76,7 +76,7 @@
         <Head>
             <MsgName>AD1</MsgName>
             <MsgID>219</MsgID>
-            <MsgSendType>周期</MsgSendType>
+            <MsgSendType>h</MsgSendType>
             <MsgCycleTime>10</MsgCycleTime>
             <MsgLength>8</MsgLength>
             <Times>5</Times>
@@ -100,7 +100,7 @@
         <Head>
             <MsgName>AD4</MsgName>
             <MsgID>4cf</MsgID>
-            <MsgSendType>周期</MsgSendType>
+            <MsgSendType>h</MsgSendType>
             <MsgCycleTime>1000</MsgCycleTime>
             <MsgLength>8</MsgLength>
             <Times>5</Times>
@@ -244,7 +244,7 @@
         <Head>
             <MsgName>BCM1</MsgName>
             <MsgID>361</MsgID>
-            <MsgSendType>周期</MsgSendType>
+            <MsgSendType>h</MsgSendType>
             <MsgCycleTime>200</MsgCycleTime>
             <MsgLength>8</MsgLength>
             <Times>5</Times>
@@ -364,7 +364,7 @@
         <Head>
             <MsgName>ESC3</MsgName>
             <MsgID>4c0</MsgID>
-            <MsgSendType>周期</MsgSendType>
+            <MsgSendType>h</MsgSendType>
             <MsgCycleTime>20</MsgCycleTime>
             <MsgLength>8</MsgLength>
             <Times>5</Times>
@@ -388,7 +388,7 @@
         <Head>
             <MsgName>HMI</MsgName>
             <MsgID>383</MsgID>
-            <MsgSendType>周期</MsgSendType>
+            <MsgSendType>h</MsgSendType>
             <MsgCycleTime>200</MsgCycleTime>
             <MsgLength>8</MsgLength>
             <Times>5</Times>
@@ -556,7 +556,7 @@
         <Head>
             <MsgName>HAD5</MsgName>
             <MsgID>236</MsgID>
-            <MsgSendType>周期</MsgSendType>
+            <MsgSendType>h</MsgSendType>
             <MsgCycleTime>1000</MsgCycleTime>
             <MsgLength>8</MsgLength>
             <Times>5</Times>
@@ -648,4 +648,4 @@
             </Signal>
         </SignalList>
     </Message>
-</Layout>
+</Layout> 
