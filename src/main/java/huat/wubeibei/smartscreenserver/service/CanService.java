@@ -5,6 +5,7 @@ import com.alibaba.fastjson.JSONObject;
 import com.google.common.eventbus.Subscribe;
 import huat.wubeibei.candataconvert.DataConvert;
 import huat.wubeibei.candataconvert.JSONStreamListener;
+import huat.wubeibei.candataconvert.util.ByteUtil;
 import huat.wubeibei.smartscreenserver.eventbus.MessageWrap;
 import huat.wubeibei.smartscreenserver.eventbus.MyEventBus;
 
@@ -22,7 +23,7 @@ public class CanService {
     private DataConvert dataConvert;
     private final static int receivePort = 9999;
     private final static int sendPort = 8888;
-    private final static String CANIp = "192.168.0.100"; // CAN总线IP地址
+    private final static String CANIp = "192.168.0.102"; // CAN总线IP地址
     private final static int MessageLength = 10;
     private final Thread CanReceiveThread = new Thread(new CanReceive()); // CAN总线接收线程
     private final ExecutorService singleThreadExecutor = Executors.newSingleThreadExecutor(); // 发送线程池，保持发送顺序
@@ -58,6 +59,7 @@ public class CanService {
                 DatagramSocket datagramSocket = new DatagramSocket();
                 datagramPacket = new DatagramPacket(bytes, bytes.length, InetAddress.getByName(CANIp), sendPort);
                 datagramSocket.send(datagramPacket);
+                System.out.println("Send->" + CANIp + ": " + ByteUtil.bytesToHex(bytes));
             } catch (IOException e) {
                 e.printStackTrace();
             }
